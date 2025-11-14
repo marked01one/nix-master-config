@@ -10,7 +10,7 @@
 
     # Home Manager flake input
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,6 +40,16 @@
         modules = [
           ./hosts/strix-g18/system.nix
           ./hosts/strix-g18/overlays.nix
+          # Home Manager NixOS module
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users = {
+              marked01one = { imports = [ ./users/marked01one.nix ]; };
+              # Add more users here if needed...
+            };
+          }
         ];
       };
     };
