@@ -33,6 +33,7 @@ in {
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.dhcpcd.setHostname = false;
 
   # Set your time zone.
   time.timeZone = "America/Vancouver";
@@ -141,8 +142,7 @@ in {
   };
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = kUsername;
+  services.displayManager.autoLogin.enable = false;
 
   # Workaround for GNOME autologin
   # https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
