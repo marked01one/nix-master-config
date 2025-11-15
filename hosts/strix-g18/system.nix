@@ -14,6 +14,7 @@ in {
     ./nvidia.nix
     ./../../system/steam.nix
     ./../../system/niri.nix
+    ./../../system/overlays.nix
   ];
 
   # Bootloader.
@@ -81,19 +82,6 @@ in {
     # enabled by default, no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  systemd.services.mpd.serviceConfig.SupplementaryGroups = [ "pipewire" ];
-  systemd.services.mpd.environment = {
-    # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-    # User-id must match above user. MPD will look inside this directory for the
-    # PipeWire socket.
-    XDG_RUNTIME_DIR = ''
-      /run/user/${toString config.users.users.${kUsername}.uid}
-    '';
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marked01one = {

@@ -13,6 +13,6 @@ in {
   programs.home-manager.enable = true;
 
   imports = [
-    ./../home/rmpc/default.nix
+    ./../home/rmpc.nix
   ];
 }
