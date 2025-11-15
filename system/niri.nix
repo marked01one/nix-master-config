@@ -8,6 +8,18 @@
   programs.niri = {
     enable = true;
     package = pkgs.niri-unstable;
-  }
+  };
+
+  # Define system dependencies for niri.
+  environment.systemPackages = with pkgs; [
+    wl-clipboard
+    wayland-utils
+    libsecret
+    cage
+    gamescope
+    xwayland-satellite-unstable
+  ];
+
+  # Environmental variables
   environment.variables.NIXOS_OZONE_WL = "1";
 }
