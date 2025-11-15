@@ -13,6 +13,7 @@ in {
     ./hardware.nix  # Include the results of the hardware scan.
     ./nvidia.nix
     ./../../system/steam.nix
+    ./../../system/niri.nix
   ];
 
   # Bootloader.
@@ -42,30 +43,6 @@ in {
   # Enable/disable the GNOME Desktop Environment.
   # services.displayManager.gdm.enable = !kUseKDE;
   # services.desktopManager.gnome.enable = !kUseKDE;
-
-  # Enable Music Player Daemon (MPD)
-  # TODO: Fix `mpd` connection issues when being used with `rmpc`.
-  # https://discourse.nixos.org/t/mpd-not-working-properly-despite-running-as-a-service/65438/3
-  # services.mpd = {
-  #   enable = true;
-  #   musicDirectory = "${config.users.users.${kUsername}.home}/Music";
-  #   startWhenNeeded = true;
-  #   user = "marked01one";
-  #   network.listenAddress = "any";
-  #   extraConfig = ''
-  #     # Pipewire output
-  #     audio_output {
-  #       type "pipewire"
-  #       name "PipeWire Output"
-  #     }
-
-  #     # ALSA output
-  #     audio_output {
-  #       type "alsa"
-  #       name "ALSA Output"
-  #     }
-  #   '';
-  # };
 
   # Enable/disable the KDE Desktop Environment
   services.displayManager.sddm = {

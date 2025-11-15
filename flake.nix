@@ -14,11 +14,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Flake input for `niri`
+    niri.url = "github:sodiboo/niri-flake";
+
     # Zen Browser flake input
     zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@ inputs:
+  outputs = { self, nixpkgs, home-manager, niri, ... }@ inputs:
 
   let
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -38,18 +41,14 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };  # { inputs = inputs; };
         modules = [
-          ./hosts/strix-g18/system.nix
-          ./hosts/strix-g18/overlays.nix
-          # Home Manager NixOS module
+          # NixOS Flake inputs as modules
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users = {
-              marked01one = { imports = [ ./users/marked01one.nix ]; };
-              # Add more users here if needed...
-            };
-          }
+          niri.nixosModules.niri
+
+          # Additional system-specific modules
+          ./hosts/strix-g18/home-manager.nix
+          ./hosts/strix-g18/overlays.nix
+          ./hosts/strix-g18/system.nix
         ];
       };
     };
