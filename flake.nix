@@ -17,7 +17,7 @@
     niri = {
       url = "github:sodiboo/niri-flake";
       # Make sure niri uses the same nixpkgs as your system
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     # Zen Browser flake input
     zen-browser.url = "github:youwen5/zen-browser-flake";
@@ -51,6 +51,7 @@
           ./hosts/strix-g18/home-manager.nix
           ./hosts/strix-g18/system.nix
           ./system/overlays.nix
+          ./system/niri.nix
         ];
       };
     };
