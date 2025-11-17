@@ -9,7 +9,7 @@
   };
 
   # Declaring addition packages to compliment niri.
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     wl-clipboard
     wayland-utils
     gamescope

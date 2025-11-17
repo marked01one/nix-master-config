@@ -53,9 +53,7 @@
           niri.nixosModules.niri
 
           # Additional system-specific modules
-          ./hosts/strix-g18/home-manager.nix
-          ./hosts/strix-g18/system.nix
-          ./system/overlays.nix
+          ./hosts/strix-g18/default.nix
         ];
       };
     };

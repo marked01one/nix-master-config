@@ -10,11 +10,15 @@ let
   kUsername = "marked01one";
 in {
   imports = [
-    ./hardware.nix  # Include the results of the hardware scan.
-    ./nvidia.nix
-    ./../../system/steam.nix
+    # System specific modifications.
+    ./system/hardware.nix
+    ./system/home-manager.nix
+    ./system/nvidia.nix
+
+    # General system configurations.
     ./../../system/niri.nix
     ./../../system/overlays.nix
+    ./../../system/steam.nix
   ];
 
   # Bootloader.
