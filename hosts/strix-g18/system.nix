@@ -150,7 +150,6 @@ in {
     prismlauncher
 
     unstable.rmpc
-    # mpd
 
     wezterm
     ghostty

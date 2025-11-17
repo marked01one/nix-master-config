@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Declaring niri.
@@ -7,7 +7,9 @@
     enable = true;
     package = pkgs.niri-unstable;
   };
-  environment.systemPackages = with pkgs; [
+
+  # Declaring addition packages to compliment niri.
+  home.packages = with pkgs; [
     wl-clipboard
     wayland-utils
     gamescope

@@ -14,5 +14,7 @@ in {
 
   imports = [
     ./../home/rmpc.nix
+    ./../home/eww.nix
+    ./../home/niri.nix
   ];
 }

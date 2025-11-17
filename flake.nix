@@ -13,10 +13,15 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
+    # Nix flake input for niri
     niri = {
       url = "github:sodiboo/niri-flake";
       # Make sure niri uses the same nixpkgs as your system
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    # Niri flake
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     # Zen Browser flake input
@@ -51,7 +56,6 @@
           ./hosts/strix-g18/home-manager.nix
           ./hosts/strix-g18/system.nix
           ./system/overlays.nix
-          ./system/niri.nix
         ];
       };
     };
