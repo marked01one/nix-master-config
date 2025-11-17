@@ -152,11 +152,9 @@ in {
     unstable.rmpc
     # mpd
 
-    # terminal emulators
     wezterm
     ghostty
 
-    # browser
     qutebrowser
 
     # programming languages

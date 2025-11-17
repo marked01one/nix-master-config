@@ -11,14 +11,19 @@
     # Home Manager flake input
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      # Make sure niri uses the same nixpkgs as your system
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Zen Browser flake input
     zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@ inputs:
+  outputs = { self, nixpkgs, home-manager, niri, ... }@ inputs:
 
   let
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -40,6 +45,7 @@
         modules = [
           # NixOS Flake inputs as modules
           home-manager.nixosModules.home-manager
+          niri.nixosModules.niri
 
           # Additional system-specific modules
           ./hosts/strix-g18/home-manager.nix
