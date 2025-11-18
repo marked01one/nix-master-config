@@ -13,12 +13,15 @@ in {
     # System specific modifications.
     ./system/hardware.nix
     ./system/home-manager.nix
+    ./system/nix-ld.nix
     ./system/nvidia.nix
 
     # General system configurations.
     ./../../system/niri.nix
     ./../../system/overlays.nix
     ./../../system/steam.nix
+    ./../../system/python.nix
+    ./../../system/fonts.nix
   ];
 
   # Bootloader.
@@ -81,10 +84,6 @@ in {
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is
-    # enabled by default, no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -105,9 +104,6 @@ in {
     ];
   };
 
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = false;
-
   # Workaround for GNOME autologin
   # https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -115,26 +111,6 @@ in {
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      zlib
-      zstd
-      stdenv.cc.cc
-      curl
-      openssl
-      attr
-      libssh
-      bzip2
-      libxml2
-      acl
-      libsodium
-      util-linux
-      xz
-      systemd
-    ];
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -150,40 +126,10 @@ in {
     youtube-music
     nvitop
     git
-    steam
     prismlauncher
-
-    unstable.rmpc
-
-    wezterm
-    ghostty
-
     qutebrowser
-
-    # programming languages
-    uv
-    (pkgs.writeShellScriptBin "python" ''
-      export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
-      exec ${pkgs.python3}/bin/python "$@"
-    '')
   ];
 
-  environment.localBinInPath = true;
-
-  fonts = {
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk-sans
-      nerd-fonts.jetbrains-mono
-    ];
-
-    fontconfig.enable = true;
-    fontconfig.defaultFonts = {
-      serif = [ "JetBrainsMono Nerd Font" ];
-      sansSerif = [ "Nunito" ];
-      monospace = [ "JetBrainsMono Nerd Font" "Noto Sans Mono CJK SC" ];
-    };
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -204,13 +150,7 @@ in {
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.05";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
