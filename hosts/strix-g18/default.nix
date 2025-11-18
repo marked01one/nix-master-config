@@ -13,15 +13,14 @@ in {
     # System specific modifications.
     ./system/hardware.nix
     ./system/home-manager.nix
-    ./system/nix-ld.nix
     ./system/nvidia.nix
 
     # General system configurations.
+    ./../../system/fonts.nix
     ./../../system/niri.nix
     ./../../system/overlays.nix
-    ./../../system/steam.nix
     ./../../system/python.nix
-    ./../../system/fonts.nix
+    ./../../system/steam.nix
   ];
 
   # Bootloader.

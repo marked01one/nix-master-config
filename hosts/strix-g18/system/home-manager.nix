@@ -1,5 +1,5 @@
 # Home Manager System configuration
-{ home-manager, ... }:
+{ home-manager, inputs, ... }:
 
 {
   home-manager.useGlobalPkgs = true;

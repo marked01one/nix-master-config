@@ -28,11 +28,11 @@
     zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, ... }@ inputs:
+  outputs = { self, nixpkgs, home-manager, niri, quickshell, ... }@ inputs:
 
   let
-    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux;
+    pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+    pkgs = inputs.nixpkgs-stable.legacyPackages.x86_64-linux;
   in
   {
 
@@ -49,7 +49,9 @@
         specialArgs = { inherit inputs; };  # { inputs = inputs; };
         modules = [
           # NixOS Flake inputs as modules
-          home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager {
+            home-manager.extraSpecialArgs = { inherit inputs; };
+          }
           niri.nixosModules.niri
 
           # Additional system-specific modules
@@ -61,7 +63,7 @@
     # Home Manager configurations for user-specific setups
     homeConfigurations = {
       "marked01one@strix-g18" = home-manager.lib.homeManagerConfigurations {
-        inherit pkgs;  # pkgs = pkgs;
+        pkgs = pkgs-unstable;  # pkgs = pkgs;
         extraSpecialArgs = { inherit inputs; };  # { inputs = inputs; };
         modules = [ ./users/marked01one.nix ];
       };

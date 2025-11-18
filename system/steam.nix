@@ -1,5 +1,5 @@
 # Install and configure Steam
-{ ... }:
+{ config, pkgs, ... }:
 
 {
   programs.steam = {
