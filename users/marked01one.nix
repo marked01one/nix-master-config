@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   username = "marked01one";
 in {
@@ -13,9 +13,10 @@ in {
   programs.home-manager.enable = true;
 
   imports = [
-    ./../home/rmpc.nix
+    # Home configuration files.
     ./../home/eww.nix
     ./../home/quickshell.nix
+    ./../home/rmpc.nix
     ./../home/wezterm.nix
   ];
 }

@@ -18,7 +18,7 @@ in {
     # General system configurations.
     ./../../system/fonts.nix
     ./../../system/niri.nix
-    ./../../system/overlays.nix
+    # ./../../system/overlays.nix
     ./../../system/python.nix
     ./../../system/steam.nix
   ];
@@ -68,9 +68,7 @@ in {
   services.printing.enable = true;
 
   # Enable bluetooth and bluetooth services
-  hardware = {
-    bluetooth.enable = true;
-  };
+  hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
   # Enable sound with pipewire.
@@ -117,16 +115,16 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    zoom-us
-    vscode
     discord
-    youtube-music
-    nvitop
     git
+    neovim
+    nvitop
     prismlauncher
     qutebrowser
+    vscode
+    wget
+    youtube-music
+    zoom-us
   ];
 
 
@@ -151,5 +149,8 @@ in {
 
   system.stateVersion = "25.05";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    allowed-users = [ "marked01one" ];
+    experimental-features = [ "nix-command" "flakes" ];
+  };
 }

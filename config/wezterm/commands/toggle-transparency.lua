@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 
+-- Toggle terminal transparency between 1.0 and 0.8
 local command = {
   brief = "Toggle terminal transparency",
   icon = "md_circle_opacity",

@@ -21,12 +21,14 @@
       systemd
     ];
   };
+
+  environment.localBinInPath = true;
   # https://github.com/nix-community/nix-ld?tab=readme-ov-file#my-pythonnodejsrubyinterpreter-libraries-do-not-find-the-libraries-configured-by-nix-ld
   environment.systemPackages = with pkgs; [
-    uv
     (pkgs.writeShellScriptBin "python" ''
       export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
       exec ${pkgs.python3}/bin/python "$@"
     '')
+    uv  # Using `uv` to generate Python virtual environments.
   ];
 }
