@@ -13,18 +13,18 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    # Nix flake input for niri
+    # Niri flake input.
     niri = {
       url = "github:sodiboo/niri-flake";
       # Make sure niri uses the same nixpkgs as your system
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    # Niri flake
+    # Quickshell flake input.
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    # Zen Browser flake input
+    # Zen Browser flake input.
     zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
