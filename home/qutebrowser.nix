@@ -8,8 +8,8 @@ in {
     package = pkgs.unstable.qutebrowser;
   };
 
-  xdg.configFile = {
-    "qutebrowser" = {
+  home.file = {
+    ".config/qutebrowser" = {
       source = "${dotfiles}/qutebrowser";
       recursive = true;
     };
