@@ -9,9 +9,9 @@ c: ConfigContainer = c  # type: ignore
 
 config.load_autoconfig(True)
 
-#Aliases for commands. The keys of the given dictionary are the
-#aliases, while the values are the commands they map to.
-#Type: Dict
+## =============================================================================
+## ======== ALIASES ============================================================
+
 c.aliases = {
     'q': 'close',
     'qa': 'quit',

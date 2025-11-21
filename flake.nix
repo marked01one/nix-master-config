@@ -41,6 +41,7 @@
   let
     pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    cwd = builtins.getEnv "PWD";
 
     sharedOverlays = [
       (import ./overlays/unstable.nix inputs)
@@ -60,6 +61,7 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
+          inherit cwd;
         };
         modules = [
           # NixOS Flake inputs as modules
@@ -80,7 +82,10 @@
           overlays = sharedOverlays;
           config.allowUnfree = true;
         };
-        extraSpecialArgs = { inherit inputs; };  # { inputs = inputs; };
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit cwd;
+        };  # { inputs = inputs; };
         modules = [ ./users/marked01one.nix ];
       };
     };
