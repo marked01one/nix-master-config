@@ -18,5 +18,6 @@ in {
     ./../home/quickshell.nix
     ./../home/rmpc.nix
     ./../home/wezterm.nix
+    ./../home/qutebrowser.nix
   ];
 }

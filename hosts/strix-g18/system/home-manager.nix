@@ -1,7 +1,6 @@
 # Home Manager System configuration
 { inputs, config, pkgs, ... }:
 let
-  dotfiles = config.lib.file.mkOutOfStoreSymlink ./../../config;
 in {
   # Import Home Manager input.
   imports = [
@@ -11,7 +10,7 @@ in {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs dotfiles; };
+    extraSpecialArgs = { inherit inputs; };
     users.marked01one = {
       imports = [ ./../../../users/marked01one.nix ];
       # Add more users here if needed...

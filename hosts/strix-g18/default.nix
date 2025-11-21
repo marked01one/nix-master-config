@@ -120,7 +120,6 @@ in {
     neovim
     nvitop
     prismlauncher
-    qutebrowser
     vscode
     wget
     youtube-music
