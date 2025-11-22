@@ -2,12 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, system, ... }:
+{ config, pkgs, inputs, ... }:
 let
-  kUseKDE = true;
+  system = "x86_64-linux";
+  hostname = "strix-g18";
+  is-kde-used = true;
 
-  kSystem = "x86_64-linux";
-  kUsername = "marked01one";
 in {
   imports = [
     # System specific modifications.
@@ -18,16 +18,16 @@ in {
     # General system configurations.
     ./../../system/fonts.nix
     ./../../system/niri.nix
-    # ./../../system/overlays.nix
     ./../../system/python.nix
     ./../../system/steam.nix
+    ./../../system/zsh.nix
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "strix-g18"; # Define your hostname.
+  networking.hostName = hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -40,23 +40,16 @@ in {
 
   # Set your time zone.
   time.timeZone = "America/Vancouver";
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # Enable the X11 windowing system.
+  # Enable both X11 and Wayland windowing systems.
   services.xserver.enable = true;
-
-  # Enable/disable the GNOME Desktop Environment.
-  # services.displayManager.gdm.enable = !kUseKDE;
-  # services.desktopManager.gnome.enable = !kUseKDE;
+  services.displayManager.sddm.wayland.enable = true;
 
   # Enable/disable the KDE Desktop Environment
-  services.displayManager.sddm = {
-    enable = kUseKDE;
-    wayland.enable = kUseKDE;
-  };
-  services.desktopManager.plasma6.enable = kUseKDE;
+  services.displayManager.sddm.enable = is-kde-used;
+  services.desktopManager.plasma6.enable = is-kde-used;
 
   # Configure keymap in X11
   services.xserver.xkb = {

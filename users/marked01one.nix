@@ -15,9 +15,10 @@ in {
   imports = [
     # Home configuration files.
     ./../home/eww.nix
+    ./../home/firefox.nix
     ./../home/quickshell.nix
+    ./../home/qutebrowser.nix
     ./../home/rmpc.nix
     ./../home/wezterm.nix
-    ./../home/qutebrowser.nix
   ];
 }
