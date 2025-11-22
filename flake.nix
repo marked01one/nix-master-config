@@ -41,14 +41,15 @@
   let
     pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    cwd = builtins.getEnv "PWD";
 
+    cwd = "/Programming/nixos-config";
     sharedOverlays = [
       (import ./overlays/unstable.nix inputs)
     ];
   in
   {
-
+    # NixOS System-wide configurations. To rebuild after change, run:
+    # `nixos-rebuild switch --flake .#$(hostname)`
     nixosConfigurations = {
       # hostname: evo-x1 (to be used on EVO-X1 server)
       evo-x1 = nixpkgs.lib.nixosSystem {
@@ -59,10 +60,7 @@
       # hostname: strix-g18 (to be used on ROG Strix G18 gaming laptop)
       strix-g18 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          inherit cwd;
-        };
+        specialArgs = {inherit inputs cwd; };
         modules = [
           # NixOS Flake inputs as modules
           home-manager.nixosModules.home-manager
@@ -74,7 +72,8 @@
       };
     };
 
-    # Home Manager configurations for user-specific setups
+    # Home Manager configurations for user-specific setups. To rebuild, run:
+    # `home-manager switch --flake .#$(whoami)@$(hostname)`
     homeConfigurations = {
       "marked01one@strix-g18" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
@@ -84,8 +83,8 @@
         };
         extraSpecialArgs = {
           inherit inputs;
-          inherit cwd;
-        };  # { inputs = inputs; };
+          cwd = "/home/marked01one/${cwd}";
+        };
         modules = [ ./users/marked01one.nix ];
       };
     };

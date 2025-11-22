@@ -1,6 +1,11 @@
 # Home Manager System configuration
-{ inputs, config, pkgs, ... }:
-let
+{
+  config,
+  cwd,
+  inputs,
+  pkgs,
+  ...
+}: let
 in {
   # Import Home Manager input.
   imports = [
@@ -10,7 +15,10 @@ in {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+      cwd = "/home/marked01one/${cwd}";
+    };
     users.marked01one = {
       imports = [ ./../../../users/marked01one.nix ];
       # Add more users here if needed...
