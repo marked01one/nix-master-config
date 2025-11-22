@@ -3,9 +3,7 @@
 {
   programs.wezterm = {
     enable = true;
-    enableBashIntegration = true;
+    enableZshIntegration = true;
     package = pkgs.unstable.wezterm;
   };
-
-  home.packages = with pkgs; [ unstable.wezterm ];
 }
