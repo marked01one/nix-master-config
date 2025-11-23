@@ -82,7 +82,7 @@ in {
     description = "marked01one";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      inputs.zen-browser.packages.${kSystem}.default
+      inputs.zen-browser.packages.${system}.default
       unstable.spotdl
       obsidian
       btop

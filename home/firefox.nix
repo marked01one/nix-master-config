@@ -10,7 +10,7 @@
     # https://mozilla.github.io/policy-templates/
     policies = {
       BlockAboutConfig = true;
-      DefaultDownloadDirectory = "${config.home.honeDirectory}/Downloads";
+      DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
       DisableTelemetry = true;
 
       # Extensions
