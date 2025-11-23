@@ -19,6 +19,7 @@ in {
     ./../../system/fonts.nix
     ./../../system/niri.nix
     ./../../system/python.nix
+    ./../../system/sound.nix
     ./../../system/steam.nix
     ./../../system/zsh.nix
   ];
@@ -59,22 +60,6 @@ in {
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable bluetooth and bluetooth services
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
-  # Enable sound with pipewire.
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    systemWide = false;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marked01one = {
