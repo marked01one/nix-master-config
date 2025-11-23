@@ -10,9 +10,12 @@
 
     fontconfig.enable = true;
     fontconfig.defaultFonts = {
-      serif = [ "JetBrainsMono Nerd Font" ];
-      sansSerif = [ "Nunito" ];
-      monospace = [ "JetBrainsMono Nerd Font" "Noto Sans Mono CJK SC" ];
+      serif = [ "Noto Serif Light" ];
+      sansSerif = [ "Noto Sans Light" ];
+      monospace = [
+        "JetBrainsMono Nerd Font"
+        "Noto Sans Mono CJK SC"
+      ];
     };
   };
 }
