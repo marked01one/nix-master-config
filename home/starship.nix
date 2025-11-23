@@ -11,10 +11,9 @@
     settings = {
       add_newline = false;
       format = lib.concatStrings [
-        "$line_break"
-        "$username@$hostname :: $all"
-        "$line_break"
-        "$directory$character"
+        "[┌─────────────────────](bold)" "$line_break"
+        "[│](bold)$username@$hostname $all" "$line_break"
+        "[└](bold)$directory$character"
       ];
       scan_timeout = 10;
       character = {
@@ -32,7 +31,7 @@
       # Git branch options.
       git_branch = {
         always_show_remote = false;
-        format = "[$symbol$branch(:$remote_branch)]($style) ";
+        format = ":: [$symbol$branch(:$remote_branch)]($style) ";
         style = "bold purple";
       };
 
