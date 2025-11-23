@@ -61,11 +61,13 @@ in {
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  users.defaultUserShell = pkgs.zsh;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marked01one = {
     isNormalUser = true;
     description = "marked01one";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       inputs.zen-browser.packages.${system}.default
       unstable.spotdl

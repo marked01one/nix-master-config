@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local commands = require("commands")
+local utils = require('utils')
 
 local config = wezterm.config_builder()
 
