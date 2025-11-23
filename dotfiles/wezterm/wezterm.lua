@@ -6,12 +6,10 @@ local config = wezterm.config_builder()
 
 config.enable_wayland = true
 
-config.initial_cols = 100
-config.initial_rows = 28
+config.initial_cols = 80
+config.initial_rows = 40
 
 config.line_height = 1.0
-
-config.color_scheme = 'Catppuccin Mocha'
 
 -- Colors
 config.colors = {
