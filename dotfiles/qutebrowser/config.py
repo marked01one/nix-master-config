@@ -1,7 +1,7 @@
 import sys, os
 import components.utils as utils
-from qutebrowser.config.configfiles import ConfigAPI
-from qutebrowser.config.config import ConfigContainer
+from qutebrowser.config.configfiles import ConfigAPI  # type: ignore
+from qutebrowser.config.config import ConfigContainer  # type: ignore
 
 
 config: ConfigAPI = config  # type: ignore
