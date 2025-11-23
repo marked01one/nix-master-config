@@ -20,6 +20,7 @@ in {
     ./../home/qutebrowser.nix
     ./../home/rmpc.nix
     ./../home/wezterm.nix
+    ./../home/zoxide.nix
     ./../home/zsh.nix
   ];
 }

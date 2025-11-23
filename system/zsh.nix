@@ -29,6 +29,19 @@
       };
     };
 
+    # Oh My Zsh plugins configuration.
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "zoxide"
+        "starship"
+      ];
+    };
+
+    # Zsh history.
+    histSize = 10000;
+    histFile = "$HOME/.zsh_history";
   };
   environment.pathsToLink = [ "/share/zsh" ];
 
