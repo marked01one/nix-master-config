@@ -19,6 +19,7 @@ in {
     ./../home/quickshell.nix
     ./../home/qutebrowser.nix
     ./../home/rmpc.nix
+    ./../home/starship.nix
     ./../home/wezterm.nix
     ./../home/zoxide.nix
     ./../home/zsh.nix
