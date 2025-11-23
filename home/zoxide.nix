@@ -5,6 +5,9 @@
     enable = true;
     enableZshIntegration = true;
     package = pkgs.unstable.zoxide;
-    options = [];
+    options = [
+      "--cmd cd"  # Replace `cd` with zoxide commands.
+      "--hook pwd"  # Change a directory's score whenever the `pwd` changes.
+    ];
   };
 }
