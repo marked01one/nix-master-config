@@ -10,10 +10,12 @@
     # For the full list of options, see: https://starship.rs/config/
     settings = {
       add_newline = false;
-      format = ''
-        $username@$hostname :: $all
-        $directory$character
-      '';
+      format = lib.concatStrings [
+        "$line_break"
+        "$username@$hostname :: $all"
+        "$line_break"
+        "$directory$character"
+      ];
       scan_timeout = 10;
       character = {
         success_symbol = "➜";
