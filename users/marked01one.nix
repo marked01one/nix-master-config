@@ -20,6 +20,5 @@ in {
     ./../home/qutebrowser.nix
     ./../home/rmpc.nix
     ./../home/wezterm.nix
-    ./../home/firefox.nix
   ];
 }
