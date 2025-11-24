@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, cwd, ... }:
+let
+  dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
+in {
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
@@ -24,4 +25,11 @@
     wl-clipboard
     zoxide
   ];
+
+  home.file = {
+    ".config/yazi" = {
+      source = "${dotfiles}/yazi";
+      recursive = true;
+    };
+  };
 }
