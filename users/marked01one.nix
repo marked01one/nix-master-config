@@ -19,6 +19,7 @@ in {
     ./../home/prismlauncher.nix
     ./../home/quickshell.nix
     ./../home/qutebrowser.nix
+    ./../home/niri.nix
     ./../home/rmpc.nix
     ./../home/starship.nix
     ./../home/wezterm.nix
