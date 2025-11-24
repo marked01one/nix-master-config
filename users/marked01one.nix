@@ -15,14 +15,16 @@ in {
   imports = [
     # Home configuration files.
     ./../home/eww.nix
+    ./../home/eza.nix
     ./../home/firefox.nix
+    ./../home/niri.nix
     ./../home/prismlauncher.nix
     ./../home/quickshell.nix
     ./../home/qutebrowser.nix
-    ./../home/niri.nix
     ./../home/rmpc.nix
     ./../home/starship.nix
     ./../home/wezterm.nix
+    ./../home/yazi.nix
     ./../home/zoxide.nix
     ./../home/zsh.nix
   ];
