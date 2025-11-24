@@ -1,10 +1,18 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, cwd, ... }:
+let
+  dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
+in {
   home.packages = with pkgs; [
     unstable.rmpc
     mpd
   ];
+
+  home.file = {
+    ".config/rmpc" = {
+      source = "${dotfiles}/rmpc";
+      recursive = true;
+    };
+  };
 
   services.mpd = {
     enable = true;
