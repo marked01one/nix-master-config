@@ -70,7 +70,7 @@ in {
     shell = pkgs.zsh;
     packages = with pkgs; [
       inputs.zen-browser.packages.${system}.default
-      unstable.spotdl
+      spotdl
       obsidian
       btop
       pandoc

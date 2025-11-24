@@ -4,25 +4,25 @@
   # Flake inputs
   inputs = {
     # Unstable (i.e., rolling release) channel
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Latest stable release (25.05) channel
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
     # Home Manager flake input
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # Niri flake input.
     niri = {
       url = "github:sodiboo/niri-flake";
       # Make sure niri uses the same nixpkgs as your system
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # Quickshell flake input.
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # Zen Browser flake input.
     zen-browser.url = "github:youwen5/zen-browser-flake";
@@ -39,8 +39,8 @@
   }@ inputs:
 
   let
-    pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux;
 
     cwd = "/Programming/nixos-config";
     sharedOverlays = [
@@ -76,7 +76,7 @@
     # `home-manager switch --flake .#$(whoami)@$(hostname)`
     homeConfigurations = {
       "marked01one@strix-g18" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs-unstable {
+        pkgs = import nixpkgs {
           system = "x86_64-linux";
           overlays = sharedOverlays;
           config.allowUnfree = true;

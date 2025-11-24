@@ -2,12 +2,12 @@
 
 {
   home.packages = with pkgs; [
-    unstable.eww
+    eww
   ];
 
   programs.eww = {
     enable = true;
-    package = pkgs.unstable.eww;
+    package = pkgs.eww;
     enableBashIntegration = true;
   };
 }

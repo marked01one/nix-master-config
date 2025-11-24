@@ -14,6 +14,6 @@
     wayland-utils
     gamescope
     fuzzel
-    unstable.xwayland-satellite
+    xwayland-satellite
   ];
 }
