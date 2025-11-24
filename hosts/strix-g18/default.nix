@@ -96,7 +96,6 @@ in {
     git
     neovim
     nvitop
-    prismlauncher
     vscode
     wget
     youtube-music

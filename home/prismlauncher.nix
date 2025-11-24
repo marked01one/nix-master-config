@@ -1,0 +1,18 @@
+{ config, pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    (unstable.prismlauncher.override {
+      # Add binary required by some mod
+      additionalPrograms = [ ffmpeg ];
+
+      # Change Java runtimes available to Prism Launcher
+      jdks = [
+        graalvm-ce
+        zulu
+        zulu17
+        zulu8
+      ];
+    })
+  ];
+}

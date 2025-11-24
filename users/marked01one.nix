@@ -16,6 +16,7 @@ in {
     # Home configuration files.
     ./../home/eww.nix
     ./../home/firefox.nix
+    ./../home/prismlauncher.nix
     ./../home/quickshell.nix
     ./../home/qutebrowser.nix
     ./../home/rmpc.nix
