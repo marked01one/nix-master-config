@@ -33,7 +33,7 @@
     home-manager,
     niri,
     nixpkgs,
-    nixpkgs-unstable,
+    nixpkgs-stable,
     quickshell,
     ...
   }@ inputs:
@@ -44,7 +44,7 @@
 
     cwd = "/Programming/nixos-config";
     sharedOverlays = [
-      (import ./overlays/unstable.nix inputs)
+      (import ./overlays/stable.nix inputs)
     ];
   in
   {
