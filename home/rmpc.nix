@@ -3,7 +3,7 @@ let
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
 in {
   home.packages = with pkgs; [
-    unstable.rmpc
+    rmpc
     mpd
   ];
 

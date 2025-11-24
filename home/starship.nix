@@ -4,7 +4,7 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgs.unstable.starship;
+    package = pkgs.starship;
 
     # Configuration written to `$XDG_CONFIG_HOME/starship.toml`.
     # For the full list of options, see: https://starship.rs/config/

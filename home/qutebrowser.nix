@@ -2,7 +2,7 @@
 let
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
 in {
-  home.packages = with pkgs; [ unstable.qutebrowser ];
+  home.packages = with pkgs; [ qutebrowser ];
 
   # Create a symlink for the qutebrowser dotfiles directory at:
   # `$HOME/.config/qutebrowser`

@@ -3,7 +3,7 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.unstable.firefox;
+    package = pkgs.firefox;
     languagePacks = [ "en-US" "en-GB" "vi-VN" ];
 
     # Policy settings for Firefox. For a full list, see here:

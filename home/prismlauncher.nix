@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    (unstable.prismlauncher.override {
+    (prismlauncher.override {
       # Add binary required by some mod
       additionalPrograms = [ ffmpeg ];
 

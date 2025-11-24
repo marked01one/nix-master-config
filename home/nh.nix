@@ -7,6 +7,6 @@
 
   program.nh = {
     enable = true;
-    package = pkgs.unstable.nh;
+    package = pkgs.nh;
   };
 }

@@ -1,7 +1,7 @@
 { config, pkgs, cwd, ... }:
-let 
+let
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
-in 
+in
 {
-
+  
 }

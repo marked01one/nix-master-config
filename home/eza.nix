@@ -4,7 +4,7 @@
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgs.unstable.eza;
+    package = pkgs.eza;
     git = true;
     colors = "always";
     icons = "always";
