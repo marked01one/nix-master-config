@@ -22,6 +22,7 @@ in {
     ./../../system/sound.nix
     ./../../system/steam.nix
     ./../../system/zsh.nix
+    ./../../system/neovim.nix
   ];
 
   # Bootloader.
@@ -94,7 +95,7 @@ in {
   environment.systemPackages = with pkgs; [
     discord
     git
-    neovim
+    vscode
     nvitop
     vscode
     wget

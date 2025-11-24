@@ -28,5 +28,6 @@ in {
     ./../home/yazi.nix
     ./../home/zoxide.nix
     ./../home/zsh.nix
+    ./../home/fastfetch.nix
   ];
 }
