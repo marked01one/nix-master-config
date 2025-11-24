@@ -7,7 +7,7 @@ in {
 
   # The path to the home directory
   home.homeDirectory = "/home/${username}";
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   # Enable Home Manager
   programs.home-manager.enable = true;

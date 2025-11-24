@@ -8,20 +8,20 @@
       _7zz = pkgs._7zz-rar;  # Support for RAR extraction
     };
 
-    extraPackages = with pkgs.unstable; [
-      fd
-      ffmpeg
-      file
-      fzf
-      glow
-      imagemagick
-      jq
-      ouch
-      poppler
-      resvg
-      ripgrep
-      wl-clipboard
-      zoxide
-    ];
+    # extraPackages = with pkgs; [
+    #   fd
+    #   ffmpeg
+    #   file
+    #   fzf
+    #   glow
+    #   imagemagick
+    #   jq
+    #   ouch
+    #   poppler
+    #   resvg
+    #   ripgrep
+    #   wl-clipboard
+    #   zoxide
+    # ];
   };
 }
