@@ -76,7 +76,7 @@
     # `home-manager switch --flake .#$(whoami)@$(hostname)`
     homeConfigurations = {
       "marked01one@strix-g18" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
+        pkgs = import nixpkgs-unstable {
           system = "x86_64-linux";
           overlays = sharedOverlays;
           config.allowUnfree = true;
