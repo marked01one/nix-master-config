@@ -23,6 +23,7 @@ in {
     ./../../system/steam.nix
     ./../../system/zsh.nix
     ./../../system/neovim.nix
+    ./../../system/nix-ld.nix
   ];
 
   # Bootloader.
