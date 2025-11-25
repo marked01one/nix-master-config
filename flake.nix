@@ -65,7 +65,10 @@
           # NixOS Flake inputs as modules
           home-manager.nixosModules.home-manager
           niri.nixosModules.niri
+
+          # Inherit shared overlays.
           { nixpkgs.overlays = sharedOverlays; }
+
           # Additional system-specific modules
           ./hosts/strix-g18/default.nix
         ];
