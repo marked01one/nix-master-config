@@ -95,7 +95,6 @@ in {
   environment.systemPackages = with pkgs; [
     discord
     git
-    vscode
     nvitop
     vscode
     wget

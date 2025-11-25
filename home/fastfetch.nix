@@ -1,32 +1,96 @@
 { config, pkgs, cwd, ... }:
+let
 
-{
+  # For a full list of modules, run: `fastfetch --list-modules`
+  modules = [
+    "break"
+    {
+      type = "title";
+      key = "name    ";
+      format = "{user-name-colored}@{host-name-colored}";
+    }
+    {
+      type = "os";
+      key = "os      ";
+      format = "{id} {version-id}";
+    }
+    {
+      type = "kernel";
+      key = "kernel  ";
+      format = "{release} ({arch})";
+    }
+    {
+      type = "packages";
+      key = "pkgs    ";
+      format = "{nix-system}";
+    }
+    {
+      type = "cpu";
+      key = "cpu     ";
+      format = "{name} ({cores-logical})";
+    }
+    {
+      type = "memory";
+      key = "memory  ";
+      format = "{used} / {total}";
+    }
+    "break"
+    {
+      type = "colors";
+      symbol = "circle";
+      paddingLeft = 2;
+    }
+  ];
+
+in {
   programs.fastfetch = {
     enable = true;
     package = pkgs.fastfetch;
-    # See https://github.com/fastfetch-cli/fastfetch/wiki/Json-Schema
+
+    # See https://github.com/fastfetch-cli/fastfetch/wiki/Configuration
     settings = {
+
       logo = {
-        source = "${cwd}/assets/fastfetch/sasaki-and-miyano.png";
+        source = "${cwd}/assets/fastfetch/luminousslime-001.jpg";
+        # Allows for rendering of images as logos in WezTerm.
+        type = "kitty-direct";
+        width = builtins.floor ((builtins.length modules) * 2.4);
+        height = (builtins.length modules);
+        padding = {
+          top = 1;
+          left = 1;
+          right = 1;
+        };
       };
-      modules = [
-        "break"
-        "title"
-        "separator"
-        "os"
-        "kernel"
-        "uptime"
-        "packages"
-        "de"
-        "wm"
-        "icons"
-        "cpu"
-        "gpu"
-        "memory"
-        "battery"
-        "break"
-        "colors"
-      ];
+
+      display = {
+        separator = "┃";
+        color = {
+          keys = "blue";
+          title = "red";
+        };
+        key = {
+          width = 16;
+          type = "both-2";
+          paddingLeft = 1;
+        };
+
+        # Set how size values should be displayed.
+        size = {
+          binaryPrefix = "jedec";
+          ndigits = 1;
+        };
+
+        bar = {
+          width = 10;
+          char = {
+            elapsed = "■";
+            total = "-";
+          };
+        };
+      };
+
+      inherit modules;  # Equals to `modules = modules;`.
     };
   };
 }
