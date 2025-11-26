@@ -34,6 +34,11 @@ let
       key = "memory  ";
       format = "{used} / {total}";
     }
+    {
+      type = "battery";
+      key = "battery ";
+      format = "{capacity-bar} [{capacity}]";
+    }
     "break"
     {
       type = "colors";
@@ -51,7 +56,7 @@ in {
     settings = {
 
       logo = {
-        source = "${cwd}/assets/fastfetch/luminousslime-001.jpg";
+        source = "${cwd}/assets/fastfetch/luminousslime-002.jpg";
         # Allows for rendering of images as logos in WezTerm.
         type = "kitty-direct";
         width = builtins.floor ((builtins.length modules) * 2.4);
@@ -82,12 +87,14 @@ in {
         };
 
         bar = {
-          width = 10;
+          width = 20;
           char = {
             elapsed = "■";
             total = "-";
           };
         };
+
+        percent.type = 3;
       };
 
       inherit modules;  # Equals to `modules = modules;`.
