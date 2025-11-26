@@ -31,5 +31,6 @@ in
     ./../home/zoxide.nix
     ./../home/zsh.nix
     ./../home/fastfetch.nix
+    ./../home/fonts.nix
   ];
 }
