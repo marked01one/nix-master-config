@@ -16,7 +16,6 @@ in {
     ./system/nvidia.nix
 
     # General system configurations.
-    ./../../system/fonts.nix
     ./../../system/niri.nix
     ./../../system/python.nix
     ./../../system/sound.nix
@@ -70,17 +69,6 @@ in {
     description = "marked01one";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      inputs.zen-browser.packages.${system}.default
-      spotdl
-      obsidian
-      btop
-      pandoc
-      drawio
-      teams-for-linux
-      kew
-      atuin
-    ];
   };
 
   # Workaround for GNOME autologin

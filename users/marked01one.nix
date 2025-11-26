@@ -33,4 +33,17 @@ in
     ./../home/fastfetch.nix
     ./../home/fonts.nix
   ];
+
+  # Packages that does not need configuration.
+  home.packages = with pkgs;[
+    inputs.zen-browser.packages.${system}.default
+    spotdl
+    obsidian
+    btop
+    pandoc
+    drawio
+    teams-for-linux
+    kew
+    zoom-us
+  ];
 }
