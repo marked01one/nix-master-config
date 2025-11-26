@@ -1,7 +1,9 @@
 { inputs, pkgs, ... }:
 let
   username = "marked01one";
-in {
+in
+{
+  nixpkgs.config.allowUnfree = true;
   # Username for the user of this home manager
   home.username = username;
 

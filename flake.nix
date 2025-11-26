@@ -45,6 +45,7 @@
     cwd = "/Programming/nixos-config";
     sharedOverlays = [
       (import ./overlays/stable.nix inputs)
+      niri.overlays.niri
     ];
   in
   {
@@ -88,7 +89,10 @@
           inherit inputs;
           cwd = "/home/marked01one/${cwd}";
         };
-        modules = [ ./users/marked01one.nix ];
+        modules = [
+          niri.homeModules.niri
+          ./users/marked01one.nix
+        ];
       };
     };
 
