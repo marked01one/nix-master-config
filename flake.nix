@@ -16,12 +16,16 @@
     # Niri flake input.
     niri = {
       url = "github:sodiboo/niri-flake";
-      # Make sure niri uses the same nixpkgs as your system
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Quickshell flake input.
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Universal themeing framework for NixOS.
+    stylix = {
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Zen Browser flake input.
@@ -35,6 +39,7 @@
     nixpkgs,
     nixpkgs-stable,
     quickshell,
+    stylix,
     ...
   }@ inputs:
 
@@ -65,7 +70,6 @@
         modules = [
           # NixOS Flake inputs as modules
           home-manager.nixosModules.home-manager
-          niri.nixosModules.niri
 
           # Inherit shared overlays.
           { nixpkgs.overlays = sharedOverlays; }
@@ -89,10 +93,7 @@
           inherit inputs;
           cwd = "/home/marked01one/${cwd}";
         };
-        modules = [
-          niri.homeModules.niri
-          ./users/marked01one.nix
-        ];
+        modules = [ ./users/marked01one.nix ];
       };
     };
 

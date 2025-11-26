@@ -10,13 +10,15 @@ let
 
 in {
   imports = [
+    # Home manager flake input.
+    inputs.home-manager.nixosModules.home-manager
+
     # System specific modifications.
     ./system/hardware.nix
     ./system/home-manager.nix
     ./system/nvidia.nix
 
     # General system configurations.
-    ./../../system/niri.nix
     ./../../system/python.nix
     ./../../system/sound.nix
     ./../../system/steam.nix

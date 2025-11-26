@@ -16,11 +16,18 @@ in
   programs.home-manager.enable = true;
 
   imports = [
+    # Flake inputs for home-manager.
+    inputs.niri.homeModules.niri
+    inputs.stylix.homeModules.stylix
+
     # Home configuration files.
     ./../home/eww.nix
     ./../home/eza.nix
+    ./../home/fastfetch.nix
     ./../home/firefox.nix
+    ./../home/fonts.nix
     ./../home/niri.nix
+    ./../home/pandoc.nix
     ./../home/prismlauncher.nix
     ./../home/quickshell.nix
     ./../home/qutebrowser.nix
@@ -30,17 +37,14 @@ in
     ./../home/yazi.nix
     ./../home/zoxide.nix
     ./../home/zsh.nix
-    ./../home/fastfetch.nix
-    ./../home/fonts.nix
   ];
 
   # Packages that does not need configuration.
   home.packages = with pkgs;[
-    inputs.zen-browser.packages.${system}.default
+    inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
     spotdl
     obsidian
     btop
-    pandoc
     drawio
     teams-for-linux
     kew

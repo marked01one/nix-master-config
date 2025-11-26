@@ -82,13 +82,18 @@ let
 in
 {
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-  programs.niri.settings = settings.strix-g18;
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
 
-  # Specify niri config directory.
-  # home.file = {
-  #   ".config/niri" = {
-  #     source = config.lib.file.mkOutOfStoreSymlink "${cwd}/niri";
-  #     recursive = true;
-  #   };
-  # };
+  # Declaring addition packages to compliment niri.
+  home.packages = with pkgs; [
+    wl-clipboard
+    wayland-utils
+    gamescope
+    fuzzel
+    xwayland-satellite
+  ];
+
 }
