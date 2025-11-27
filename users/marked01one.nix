@@ -51,7 +51,6 @@ in
     zoom-us
     vscode
     youtube-music
-    discord
     git
     wget
   ];

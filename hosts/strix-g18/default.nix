@@ -4,7 +4,6 @@
 
 { config, pkgs, inputs, ... }:
 let
-  system = "x86_64-linux";
   hostname = "strix-g18";
   is-kde-used = true;
 
@@ -67,6 +66,9 @@ in {
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
+
+  environment.systemPackages = with pkgs; [ stable.discord ];
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Workaround for GNOME autologin
   # https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
