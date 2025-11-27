@@ -19,13 +19,14 @@ in {
     ./system/nvidia.nix
 
     # General system configurations.
+    ./../../system/default-packages.nix
+    ./../../system/docker.nix
+    ./../../system/neovim.nix
+    ./../../system/nix-ld.nix
     ./../../system/python.nix
     ./../../system/sound.nix
     ./../../system/steam.nix
     ./../../system/zsh.nix
-    ./../../system/neovim.nix
-    ./../../system/nix-ld.nix
-    ./../../system/docker.nix
   ];
 
   # Bootloader.
@@ -74,19 +75,6 @@ in {
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    discord
-    git
-    nvitop
-    vscode
-    wget
-    youtube-music
-    zoom-us
-  ];
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

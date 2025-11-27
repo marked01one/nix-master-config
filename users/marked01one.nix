@@ -49,5 +49,10 @@ in
     teams-for-linux
     kew
     zoom-us
+    vscode
+    youtube-music
+    discord
+    git
+    wget
   ];
 }

@@ -3,7 +3,6 @@ let
 
   # For a full list of modules, run: `fastfetch --list-modules`
   modules = [
-    "break"
     {
       type = "title";
       key = "name    ";

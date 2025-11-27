@@ -30,5 +30,6 @@
       exec ${pkgs.python3}/bin/python "$@"
     '')
     uv  # Using `uv` to generate Python virtual environments.
+    python313Packages.jupyterlab
   ];
 }
