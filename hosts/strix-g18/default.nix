@@ -41,19 +41,31 @@ in {
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # Enable both X11 and Wayland windowing systems.
-  services.xserver.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  # # Enable both X11 and Wayland windowing systems.
+  # services.xserver.enable = true;
+  # services.displayManager.sddm.wayland.enable = true;
 
-  # Enable/disable the KDE Desktop Environment
-  services.displayManager.sddm.enable = is-kde-used;
-  services.desktopManager.plasma6.enable = is-kde-used;
+  # # Enable/disable the KDE Desktop Environment
+  # services.displayManager.sddm.enable = is-kde-used;
+  # services.desktopManager.plasma6.enable = is-kde-used;
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
+
+
+  # As of 25.11
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+
+  # To disable installing GNOME's suite of applications
+  # and only be left with GNOME shell.
+  services.gnome.core-apps.enable = true;
+  services.gnome.core-developer-tools.enable = false;
+  services.gnome.games.enable = false;
+  environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -63,12 +75,14 @@ in {
   users.users.marked01one = {
     isNormalUser = true;
     description = "marked01one";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
   };
 
-  environment.systemPackages = with pkgs; [ stable.discord ];
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.systemPackages = with pkgs; [
+    discord
+    legcord
+  ];
 
   # Workaround for GNOME autologin
   # https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
@@ -97,7 +111,7 @@ in {
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 
   nix.settings = {
     allowed-users = [ "marked01one" ];

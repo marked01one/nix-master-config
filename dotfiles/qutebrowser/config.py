@@ -688,7 +688,7 @@ c.url.yank_ignored_parameters = [
 ## =============================================================================
 ## ======== WINDOW SETTINGS ====================================================
 
-c.window.hide_decoration = True
+c.window.hide_decoration = False
 c.window.title_format = '{perc}{current_title}{title_sep}qutebrowser'
 c.window.transparent = False
 

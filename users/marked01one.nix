@@ -26,6 +26,7 @@ in
     ./../home/fastfetch.nix
     ./../home/firefox.nix
     ./../home/fonts.nix
+    ./../home/gtk.nix
     ./../home/niri.nix
     ./../home/pandoc.nix
     ./../home/prismlauncher.nix
