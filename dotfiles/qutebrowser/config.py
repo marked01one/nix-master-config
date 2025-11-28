@@ -1,5 +1,7 @@
 import sys, os
 import components.utils as utils
+from components.interceptors import redirect_to_https
+from qutebrowser.api import interceptor
 from qutebrowser.config.configfiles import ConfigAPI  # type: ignore
 from qutebrowser.config.config import ConfigContainer  # type: ignore
 
@@ -673,7 +675,7 @@ c.url.auto_search = 'naive'
 c.url.default_page = 'https://start.duckduckgo.com/'
 c.url.incdec_segments = ['path', 'query']
 c.url.open_base_url = False
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
+c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}+-ai'}
 c.url.start_pages = ['https://start.duckduckgo.com']
 c.url.yank_ignored_parameters = [
     'ref',
@@ -1033,3 +1035,9 @@ config.set('colors.webpage.darkmode.enabled', False, '*://hianime.to/*')
 config.set('colors.webpage.darkmode.enabled', False, '*://music.youtube.com/*')
 config.set('colors.webpage.darkmode.enabled', False, '*://duckduckgo.com/*')
 config.set('colors.webpage.darkmode.enabled', False, "*://www.youtube.com/*")
+config.set('colors.webpage.darkmode.enabled', False, "*://gemini.google.com/*")
+
+## =============================================================================
+## ======== REQUEST INTERCEPTORS ===============================================
+
+interceptor.register(redirect_to_https)
