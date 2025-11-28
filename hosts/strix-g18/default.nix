@@ -26,12 +26,14 @@ in {
     ./../../system/sound.nix
     ./../../system/steam.nix
     ./../../system/zsh.nix
+    ./../../system/gnome.nix
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Networking.
   networking.networkmanager.enable = true;
   networking.dhcpcd.setHostname = false;
   networking.hostName = hostname;
@@ -41,31 +43,11 @@ in {
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # # Enable both X11 and Wayland windowing systems.
-  # services.xserver.enable = true;
-  # services.displayManager.sddm.wayland.enable = true;
-
-  # # Enable/disable the KDE Desktop Environment
-  # services.displayManager.sddm.enable = is-kde-used;
-  # services.desktopManager.plasma6.enable = is-kde-used;
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
-
-
-  # As of 25.11
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-
-  # To disable installing GNOME's suite of applications
-  # and only be left with GNOME shell.
-  services.gnome.core-apps.enable = true;
-  services.gnome.core-developer-tools.enable = false;
-  services.gnome.games.enable = false;
-  environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -83,11 +65,6 @@ in {
     discord
     legcord
   ];
-
-  # Workaround for GNOME autologin
-  # https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
