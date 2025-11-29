@@ -15,27 +15,27 @@ config.load_autoconfig(True)
 ## ======== ALIASES ============================================================
 
 c.aliases = {
-    'q': 'close',
-    'qa': 'quit',
-    'w': 'session-save',
-    'wq': 'quit --save',
-    'wqa': 'quit --save'
+  'q': 'close',
+  'qa': 'quit',
+  'w': 'session-save',
+  'wq': 'quit --save',
+  'wqa': 'quit --save'
 }
 c.auto_save.interval = 15000
 c.auto_save.session = True
 c.backend = 'webengine'
 
 c.bindings.key_mappings = {
-    '<Ctrl-[>': '<Escape>',
-    '<Ctrl-6>': '<Ctrl-^>',
-    '<Ctrl-M>': '<Return>',
-    '<Ctrl-J>': '<Return>',
-    '<Ctrl-I>': '<Tab>',
+  '<Ctrl-[>': '<Escape>',
+  '<Ctrl-6>': '<Ctrl-^>',
+  '<Ctrl-M>': '<Return>',
+  '<Ctrl-J>': '<Return>',
+  '<Ctrl-I>': '<Tab>',
 
-    '<Shift-Return>': '<Return>',
-    '<Enter>': '<Return>',
-    '<Shift-Enter>': '<Return>',
-    '<Ctrl-Enter>': '<Ctrl-Return>'
+  '<Shift-Return>': '<Return>',
+  '<Enter>': '<Return>',
+  '<Shift-Enter>': '<Return>',
+  '<Ctrl-Enter>': '<Ctrl-Return>'
 }
 
 ## =============================================================================
@@ -392,9 +392,9 @@ c.editor.remove_file = True
 ## ======== FILE SELECTION =====================================================
 
 FILE_SELECT = {
-    'folder': ['xterm', '-e', 'ranger', '--choosedir={}'],
-    'multiple_files': ['xterm', '-e', 'ranger', '--choosedir={}'],
-    'single_file': ['xterm', '-e', 'ranger', '--choosedir={}'],
+  'folder': ['xterm', '-e', 'ranger', '--choosedir={}'],
+  'multiple_files': ['xterm', '-e', 'ranger', '--choosedir={}'],
+  'single_file': ['xterm', '-e', 'ranger', '--choosedir={}'],
 }
 
 c.fileselect.folder.command = FILE_SELECT['folder']
@@ -594,9 +594,9 @@ c.session.lazy_restore = False
 ## ======== SPELLCHECKING ======================================================
 
 c.spellcheck.languages = [
-    'en-US',
-    'en-GB',
-    'vi-VN',
+  'en-US',
+  'en-GB',
+  'vi-VN',
 ]
 
 ## =============================================================================
@@ -606,13 +606,13 @@ c.statusbar.padding = {'top': 1, 'bottom': 1, 'left': 0, 'right': 0}
 c.statusbar.position = 'bottom'
 c.statusbar.show = 'always'
 c.statusbar.widgets = [
-    'keypress',
-    'search_match',
-    'url',
-    'scroll',
-    'history',
-    'tabs',
-    'progress',
+  'keypress',
+  'search_match',
+  'url',
+  'scroll',
+  'history',
+  'tabs',
+  'progress',
 ]
 
 ## =============================================================================
@@ -643,10 +643,10 @@ c.tabs.new_position.stacking = True
 c.tabs.new_position.unrelated = 'last'
 
 c.tabs.padding = {
-    'top': 5,
-    'bottom': 5,
-    'left': 5,
-    'right': 5
+  'top': 5,
+  'bottom': 5,
+  'left': 5,
+  'right': 5
 }
 
 c.tabs.pinned.frozen = True
@@ -678,13 +678,13 @@ c.url.open_base_url = False
 c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}+-ai'}
 c.url.start_pages = ['https://start.duckduckgo.com']
 c.url.yank_ignored_parameters = [
-    'ref',
-    'utm_source',
-    'utm_medium',
-    'utm_campaign',
-    'utm_term',
-    'utm_content',
-    'utm_name'
+  'ref',
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+  'utm_name'
 ]
 
 ## =============================================================================
