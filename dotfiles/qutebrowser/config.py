@@ -1,6 +1,5 @@
-import sys, os
 import components.utils as utils
-from components.interceptors import redirect_to_https
+from components.interceptors import redirect_to_https, redirect_nix_shortcuts
 from qutebrowser.api import interceptor
 from qutebrowser.config.configfiles import ConfigAPI  # type: ignore
 from qutebrowser.config.config import ConfigContainer  # type: ignore
@@ -214,7 +213,7 @@ c.colors.webpage.bg = 'white'
 
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.contrast = 0.0
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 
 c.colors.webpage.darkmode.policy.images = 'smart'
 c.colors.webpage.darkmode.policy.page = 'smart'
@@ -675,7 +674,19 @@ c.url.auto_search = 'naive'
 c.url.default_page = 'https://start.duckduckgo.com/'
 c.url.incdec_segments = ['path', 'query']
 c.url.open_base_url = False
-c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}+-ai'}
+c.url.searchengines = {
+  # Google Search shall not query AI results by default.
+  'DEFAULT': 'https://google.com/search?q={}+-ai',
+  'gg': 'https://google.com/search?q={}',
+  'ddg': 'https://duckduckgo.com/',
+
+  # NixOS search queries.
+  # NOTE: We're using a blank URL as a redirector address for all Nix-related calls.
+  'nix': 'https://nix.default-redirector/{}',
+
+  # Wikipedia search queries.
+  'wiki': 'https://en.wikipedia.org/w/index.php?search={}',
+}
 c.url.start_pages = ['https://start.duckduckgo.com']
 c.url.yank_ignored_parameters = [
   'ref',
@@ -1031,13 +1042,9 @@ config.bind('xt', 'config-cycle tabs.show always switching')
 ## =============================================================================
 ## ======== SITE SPECIFIC EXCEPTIONS ===========================================
 
-config.set('colors.webpage.darkmode.enabled', False, '*://hianime.to/*')
-config.set('colors.webpage.darkmode.enabled', False, '*://music.youtube.com/*')
-config.set('colors.webpage.darkmode.enabled', False, '*://duckduckgo.com/*')
-config.set('colors.webpage.darkmode.enabled', False, "*://www.youtube.com/*")
-config.set('colors.webpage.darkmode.enabled', False, "*://gemini.google.com/*")
 
 ## =============================================================================
 ## ======== REQUEST INTERCEPTORS ===============================================
 
 interceptor.register(redirect_to_https)
+interceptor.register(redirect_nix_shortcuts)

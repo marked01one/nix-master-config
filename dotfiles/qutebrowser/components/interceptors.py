@@ -1,4 +1,5 @@
 from qutebrowser.api import interceptor
+from PyQt6.QtCore import QUrl
 
 def redirect_to_https(req: interceptor.Request):
   """
@@ -13,7 +14,28 @@ def redirect_to_https(req: interceptor.Request):
   url.setScheme('https')
 
   # Try redirecting to HTTPS address.
-  try:
-    req.redirect(url)
-  except Exception:
-    pass
+  req.redirect(url)
+
+
+def redirect_nix_shortcuts(req: interceptor.Request):
+  """
+  Redirect `nix:<shortcut>` addresses to their according sites.
+  """
+  url = req.request_url
+  hostname = url.host(QUrl.ComponentFormattingOption.PrettyDecoded)
+  path = url.path(QUrl.ComponentFormattingOption.PrettyDecoded)
+  # Bypass any requests that's not of scheme `nix:<anything>`
+  if hostname != 'nix.default-redirector': return
+
+  shortcuts = {
+    "/search": "https://search.nixos.org/packages?channel=unstable",
+    "/hm-opts": "https://home-manager-options.extranix.com/",
+    "/wiki": "https://wiki.nixos.org/",
+  }
+
+  # If path not found: redirect to default NixOS intro page for now.
+  redirect_url = shortcuts.get(path, "https://nixos.org/")
+  url.setUrl(redirect_url)
+
+  # Try redirecting.
+  req.redirect(url)

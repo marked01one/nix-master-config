@@ -54,5 +54,6 @@ in
     youtube-music
     git
     wget
+    legcord
   ];
 }
