@@ -57,14 +57,9 @@ in {
   users.users.marked01one = {
     isNormalUser = true;
     description = "marked01one";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
-
-  environment.systemPackages = with pkgs; [
-    discord
-    legcord
-  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -88,7 +83,7 @@ in {
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = "26.05";
+  system.stateVersion = "25.11";
 
   nix.settings = {
     allowed-users = [ "marked01one" ];
