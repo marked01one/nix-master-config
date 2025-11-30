@@ -9,23 +9,20 @@ in
 
   # The path to the home directory
   home.homeDirectory = "/home/${username}";
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
   home.enableNixpkgsReleaseCheck = false;
 
   # Enable Home Manager
   programs.home-manager.enable = true;
 
   imports = [
-    # Flake inputs for home-manager.
-    inputs.niri.homeModules.niri
-    inputs.stylix.homeModules.stylix
-
     # Home configuration files.
     ./../home/eww.nix
     ./../home/eza.nix
     ./../home/fastfetch.nix
     ./../home/firefox.nix
     ./../home/fonts.nix
+    ./../home/gnome.nix
     ./../home/gtk.nix
     ./../home/niri.nix
     ./../home/pandoc.nix
@@ -34,6 +31,7 @@ in
     ./../home/qutebrowser.nix
     ./../home/rmpc.nix
     ./../home/starship.nix
+    ./../home/stylix.nix
     ./../home/wezterm.nix
     ./../home/yazi.nix
     ./../home/zoxide.nix

@@ -69,8 +69,10 @@ in {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = shared-overlays;
 
+  # Add specific user-defined shell scripts.
   environment.systemPackages = with shell-scripts; [
     hello
+    show-colors
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

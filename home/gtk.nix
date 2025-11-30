@@ -3,7 +3,7 @@
 {
   gtk.cursorTheme = {
     name = "Vanilla-DMZ";
-    package = pkgs.vanillla-dmz;
+    package = pkgs.vanilla-dmz;
     size = 16;
   };
 }

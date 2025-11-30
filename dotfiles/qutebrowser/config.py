@@ -678,7 +678,9 @@ c.url.searchengines = {
   # Google Search shall not query AI results by default.
   'DEFAULT': 'https://google.com/search?q={}+-ai',
   'gg': 'https://google.com/search?q={}',
-  'ddg': 'https://duckduckgo.com/',
+
+  # DuckDuckGo search queries.
+  'ddg': 'https://duckduckgo.com/search?q={}',
 
   # NixOS search queries.
   # NOTE: We're using a blank URL as a redirector address for all Nix-related calls.

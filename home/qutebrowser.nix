@@ -1,4 +1,4 @@
-{ config, pkgs, cwd, ... }:
+{ config, pkgs, cwd, inputs, ... }:
 let
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
 in {
@@ -12,4 +12,8 @@ in {
       recursive = true;
     };
   };
+
+  # Styling using stylix.
+  stylix.targets.qutebrowser.enable = true;
+
 }

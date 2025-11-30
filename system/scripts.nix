@@ -14,4 +14,10 @@
     # Read the text of the shell script from an external file.
     text = builtins.readFile ./../scripts/hello.sh;
   };
+
+  show-colors = pkgs.writeShellApplication {
+    name = "show-colors";
+    # Read the text of the shell script from an external file.
+    text = builtins.readFile ./../scripts/show-colors.sh;
+  };
 }

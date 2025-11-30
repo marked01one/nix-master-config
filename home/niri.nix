@@ -81,6 +81,7 @@ let
   };
 in
 {
+  imports = [ inputs.niri.homeModules.niri ];
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri = {
     enable = true;

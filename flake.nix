@@ -50,7 +50,6 @@
     cwd = "/Programming/nixos-config";
     shared-overlays = [
       (import ./overlays/stable.nix inputs)
-      niri.overlays.niri
     ];
   in
   {
@@ -67,13 +66,7 @@
       strix-g18 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs cwd shared-overlays; };
-        modules = [
-          # Inherit shared overlays.
-          { nixpkgs.overlays = shared-overlays; }
-
-          # Additional system-specific modules
-          ./hosts/strix-g18/default.nix
-        ];
+        modules = [ ./hosts/strix-g18/default.nix ];
       };
     };
 
