@@ -10,7 +10,7 @@ in
   # The path to the home directory
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "25.11";
-  home.enableNixpkgsReleaseCheck = true;
+  home.enableNixpkgsReleaseCheck = false;
 
   # Enable Home Manager
   programs.home-manager.enable = true;
@@ -41,7 +41,7 @@ in
   ];
 
   # Packages that does not need configuration.
-  home.packages = with pkgs;[
+  home.packages = with pkgs; [
     inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
     spotdl
     obsidian

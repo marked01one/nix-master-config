@@ -48,7 +48,7 @@
     pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux;
 
     cwd = "/Programming/nixos-config";
-    sharedOverlays = [
+    shared-overlays = [
       (import ./overlays/stable.nix inputs)
       niri.overlays.niri
     ];
@@ -66,13 +66,10 @@
       # hostname: strix-g18 (to be used on ROG Strix G18 gaming laptop)
       strix-g18 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs cwd; };
+        specialArgs = {inherit inputs cwd shared-overlays; };
         modules = [
-          # NixOS Flake inputs as modules
-          home-manager.nixosModules.home-manager
-
           # Inherit shared overlays.
-          { nixpkgs.overlays = sharedOverlays; }
+          { nixpkgs.overlays = shared-overlays; }
 
           # Additional system-specific modules
           ./hosts/strix-g18/default.nix
@@ -86,7 +83,7 @@
       "marked01one@strix-g18" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
-          overlays = sharedOverlays;
+          overlays = shared-overlays;
           config.allowUnfree = true;
         };
         extraSpecialArgs = {

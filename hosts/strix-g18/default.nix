@@ -2,16 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  shared-overlays,
+  ...
+}:
 let
   hostname = "strix-g18";
-  is-kde-used = true;
+  shell-scripts = import ./../../system/scripts.nix { inherit pkgs; };
 
 in {
   imports = [
-    # Home manager flake input.
-    inputs.home-manager.nixosModules.home-manager
-
     # System specific modifications.
     ./system/hardware.nix
     ./system/home-manager.nix
@@ -20,13 +23,14 @@ in {
     # General system configurations.
     ./../../system/default-packages.nix
     ./../../system/docker.nix
+    ./../../system/gnome.nix
     ./../../system/neovim.nix
+    ./../../system/nh.nix
     ./../../system/nix-ld.nix
     ./../../system/python.nix
     ./../../system/sound.nix
     ./../../system/steam.nix
     ./../../system/zsh.nix
-    ./../../system/gnome.nix
   ];
 
   # Bootloader.
@@ -63,6 +67,11 @@ in {
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = shared-overlays;
+
+  environment.systemPackages = with shell-scripts; [
+    hello
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
