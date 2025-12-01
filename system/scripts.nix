@@ -20,4 +20,9 @@
     # Read the text of the shell script from an external file.
     text = builtins.readFile ./../scripts/show-colors.sh;
   };
+
+  print-theme = pkgs.writeShellApplication {
+    name = "print-theme";
+    text = builtins.readFile ./../scripts/print-theme.sh;
+  };
 }

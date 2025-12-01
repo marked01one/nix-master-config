@@ -73,6 +73,7 @@ in {
   environment.systemPackages = with shell-scripts; [
     hello
     show-colors
+    print-theme
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
