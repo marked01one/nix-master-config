@@ -1,11 +1,11 @@
 { pkgs, ... }:
 
 {
-  cp-file = pkgs.writeShellApplication {
-    name = "cp-file";
+  fcp = pkgs.writeShellApplication {
+    name = "fcp";
     runtimeInputs = with pkgs; [ xclip ];
     # Read the text of the shell script from an external file.
-    text = builtins.readFile ./../scripts/cp-file.sh;
+    text = builtins.readFile ./../scripts/fcp.sh;
   };
 
   nix-submit = pkgs.writeShellApplication {

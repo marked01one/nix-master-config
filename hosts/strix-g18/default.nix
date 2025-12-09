@@ -74,7 +74,7 @@ in {
     hello
     show-colors
     print-theme
-    cp-file
+    fcp
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
