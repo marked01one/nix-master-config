@@ -34,6 +34,7 @@ in
     ./../home/stylix.nix
     ./../home/wezterm.nix
     ./../home/yazi.nix
+    ./../home/yt-dlp.nix
     ./../home/zoxide.nix
     ./../home/zsh.nix
   ];
@@ -53,5 +54,6 @@ in
     git
     wget
     legcord
+    chromium
   ];
 }
