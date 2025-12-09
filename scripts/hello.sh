@@ -1,1 +1,3 @@
-echo "hello world!" | cowsay | lolcat
+# Initial shell script for NixOS
+
+echo "Hello World!" | cowsay | lolcat

@@ -1,6 +1,13 @@
 { pkgs, ... }:
 
 {
+  cp-file = pkgs.writeShellApplication {
+    name = "cp-file";
+    runtimeInputs = with pkgs; [ xclip ];
+    # Read the text of the shell script from an external file.
+    text = builtins.readFile ./../scripts/cp-file.sh;
+  };
+
   nix-submit = pkgs.writeShellApplication {
     name = "nix-submit";
     runtimeInputs = with pkgs; [ git neovim grep ];
