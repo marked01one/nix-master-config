@@ -1,5 +1,7 @@
 { config, pkgs, inputs, cwd, ... }:
 let
+  niri-utils = import ./utils/niri.nix;
+
   settings = {
     strix-g18 = {
       input = {
@@ -42,6 +44,12 @@ let
           active.color = "#7fc8ff";  # TODO: Migrate this value to stylix.
           inactive.color = "#505050"; # TODO: Migrate this value to stylix.
         };
+
+        shadow = {
+          softness = 30;
+          spread = 5;
+        };
+
       };
 
       window-rules =
@@ -79,6 +87,8 @@ let
       ];
     };
   };
+
+  dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
 in
 {
   imports = [ inputs.niri.homeModules.niri ];
@@ -86,7 +96,16 @@ in
   programs.niri = {
     enable = true;
     package = pkgs.niri-unstable;
+    settings = null;
   };
+
+  home.file = {
+    ".config/niri" = {
+      source = "${dotfiles}/niri";
+      recursive = true;
+    };
+  };
+
 
   # Declaring addition packages to compliment niri.
   home.packages = with pkgs; [
