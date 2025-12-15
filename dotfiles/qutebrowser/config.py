@@ -1,4 +1,5 @@
-import components.utils as utils
+from components.utils import Utils
+from components.colors import ColorsBase16
 from components.interceptors import redirect_to_https, redirect_nix_shortcuts
 from qutebrowser.api import interceptor
 from qutebrowser.config.configfiles import ConfigAPI  # type: ignore
@@ -7,6 +8,10 @@ from qutebrowser.config.config import ConfigContainer  # type: ignore
 
 config: ConfigAPI = config  # type: ignore
 c: ConfigContainer = c  # type: ignore
+
+# Initialize base16 color palette.
+colors = ColorsBase16()
+colors.get_scheme()
 
 config.load_autoconfig(True)
 
@@ -43,168 +48,157 @@ c.bindings.key_mappings = {
 c.changelog_after_upgrade = 'minor'
 
 ## =============================================================================
-## ======== CONTEXT MENU COLORS ================================================
+## ======== SEARCH COMPLETION COLORS ===========================================
 
-c.colors.completion.category.bg = utils.clean('''
-qlineargradient(x1:0, y1:0, x2:0, y2:1,
-  stop:0 #888888, stop:1 #505050
-)''')
-c.colors.completion.category.border.bottom = 'black'
-c.colors.completion.category.border.top = 'black'
-c.colors.completion.category.fg = 'white'
+c.colors.completion.fg = colors.base05
 
-c.colors.completion.even.bg = '#333333'
+c.colors.completion.category.bg = colors.base00
+c.colors.completion.category.fg = colors.base0A
+c.colors.completion.category.border.bottom = colors.base00
+c.colors.completion.category.border.top = colors.base00
 
-c.colors.completion.fg = ['white', 'white', 'white']
+c.colors.completion.odd.bg = colors.base01
+c.colors.completion.even.bg = colors.base00
 
-c.colors.completion.item.selected.bg = '#e8c000'
-c.colors.completion.item.selected.border.bottom = '#bbbb00'
-c.colors.completion.item.selected.border.top = '#bbbb00'
-c.colors.completion.item.selected.fg = 'black'
-c.colors.completion.item.selected.match.fg = '#ff4444'
+c.colors.completion.item.selected.bg = colors.base02
+c.colors.completion.item.selected.fg = colors.base05
 
-c.colors.completion.match.fg = '#ff4444'
+c.colors.completion.item.selected.border.bottom = colors.base02
+c.colors.completion.item.selected.border.top = colors.base02
 
-c.colors.completion.odd.bg = '#444444'
+c.colors.completion.item.selected.match.fg = colors.base0B
 
-c.colors.completion.scrollbar.bg = '#333333'
-c.colors.completion.scrollbar.fg = 'white'
+c.colors.completion.match.fg = colors.base0B
+
+c.colors.completion.scrollbar.bg = colors.base00
+c.colors.completion.scrollbar.fg = colors.base05
 
 ## =============================================================================
 ## ======== CONTEXT MENU COLORS ================================================
 
-c.colors.contextmenu.disabled.bg = None
-c.colors.contextmenu.disabled.fg = None
+c.colors.contextmenu.disabled.bg = colors.base01
+c.colors.contextmenu.disabled.fg = colors.base04
 
-c.colors.contextmenu.menu.bg = None
-c.colors.contextmenu.menu.fg = None
+c.colors.contextmenu.menu.bg = colors.base00
+c.colors.contextmenu.menu.fg = colors.base05
 
-c.colors.contextmenu.selected.bg = None
-c.colors.contextmenu.selected.fg = None
+c.colors.contextmenu.selected.bg = colors.base02
+c.colors.contextmenu.selected.fg = colors.base05
 
 ## =============================================================================
 ## ======== DOWNLOADS BAR COLORS ===============================================
 
-c.colors.downloads.bar.bg = 'black'
+c.colors.downloads.bar.bg = colors.base00
 
-c.colors.downloads.error.bg = 'red'
-c.colors.downloads.error.fg = 'white'
+c.colors.downloads.error.fg = colors.base08
 
-c.colors.downloads.start.bg = '#0000aa'
-c.colors.downloads.start.fg = 'white'
+c.colors.downloads.start.bg = colors.base0D
+c.colors.downloads.start.fg = colors.base00
 
-c.colors.downloads.stop.bg = '#00aa00'
-c.colors.downloads.stop.fg = 'white'
-
-c.colors.downloads.system.bg = 'rgb'
-c.colors.downloads.system.fg = 'rgb'
+c.colors.downloads.stop.bg = colors.base0C
+c.colors.downloads.stop.fg = colors.base00
 
 ## =============================================================================
 ## ======== HINTS COLORS =======================================================
 
-c.colors.hints.bg = utils.clean("""
-qlineargradient(x1:0, y1:0, x2:0, y2:1,
-  stop:0 rgba(255, 247, 133, 0.8),
-  stop:1 rgba(255, 197, 66, 0.8)
-)""")
-c.colors.hints.fg = 'black'
-c.colors.hints.match.fg = 'green'
+c.colors.hints.bg = colors.base0A
+c.colors.hints.fg = colors.base00
+c.colors.hints.match.fg = colors.base05
 
 ## =============================================================================
 ## ======== KEYHINTS COLORS ====================================================
-c.colors.keyhint.bg = 'rgba(0, 0, 0, 80%)'
-c.colors.keyhint.fg = '#FFFFFF'
 
-c.colors.keyhint.suffix.fg = '#FFFF00'
+c.colors.keyhint.bg = colors.base00
+c.colors.keyhint.fg = colors.base05
+c.colors.keyhint.suffix.fg = colors.base05
 
-c.colors.messages.error.bg = 'red'
-c.colors.messages.error.border = '#bb0000'
-c.colors.messages.error.fg = 'white'
+## =============================================================================
+## ======== MESSAGES COLORS ====================================================
 
-c.colors.messages.info.bg = 'black'
-c.colors.messages.info.border = '#333333'
-c.colors.messages.info.fg = 'white'
+c.colors.messages.error.bg = colors.base08
+c.colors.messages.error.fg = colors.base00
+c.colors.messages.error.border = colors.base08
 
-c.colors.messages.warning.bg = 'darkorange'
-c.colors.messages.warning.border = '#d47300'
-c.colors.messages.warning.fg = 'black'
+c.colors.messages.info.bg = colors.base00
+c.colors.messages.info.fg = colors.base05
+c.colors.messages.info.border = colors.base00
 
-c.colors.prompts.bg = '#444444'
-c.colors.prompts.border = '1px solid gray'
-c.colors.prompts.fg = 'white'
+c.colors.messages.warning.bg = colors.base0E
+c.colors.messages.warning.fg = colors.base00
+c.colors.messages.warning.border = colors.base0E
 
-c.colors.prompts.selected.bg = 'grey'
-c.colors.prompts.selected.fg = 'white'
+## =============================================================================
+## ========= PROMPTS COLORS ====================================================
+
+c.colors.prompts.bg = colors.base00
+c.colors.prompts.fg = colors.base05
+c.colors.prompts.border = colors.base00
+
+c.colors.prompts.selected.bg = colors.base02
+c.colors.prompts.selected.fg = colors.base05
 
 ## =============================================================================
 ## ========= STATUS BAR COLORS =================================================
-c.colors.statusbar.caret.bg = 'purple'
-c.colors.statusbar.caret.fg = 'white'
 
-c.colors.statusbar.caret.selection.bg = '#a12dff'
-c.colors.statusbar.caret.selection.fg = 'white'
+c.colors.statusbar.caret.bg = colors.base0E
+c.colors.statusbar.caret.fg = colors.base00
+c.colors.statusbar.caret.selection.bg = colors.base0D
+c.colors.statusbar.caret.selection.fg = colors.base00
 
-c.colors.statusbar.command.bg = 'black'
-c.colors.statusbar.command.fg = 'white'
-c.colors.statusbar.command.private.bg = 'darkslategray'
-c.colors.statusbar.command.private.fg = 'white'
+c.colors.statusbar.command.bg = colors.base00
+c.colors.statusbar.command.fg = colors.base05
+c.colors.statusbar.command.private.bg = colors.base00
+c.colors.statusbar.command.private.fg = colors.base05
 
-c.colors.statusbar.insert.bg = 'darkgreen'
-c.colors.statusbar.insert.fg = 'white'
+c.colors.statusbar.insert.bg = colors.base0D
+c.colors.statusbar.insert.fg = colors.base00
 
-c.colors.statusbar.normal.bg = 'black'
-c.colors.statusbar.normal.fg = 'white'
+c.colors.statusbar.normal.bg = colors.base00
+c.colors.statusbar.normal.fg = colors.base0B
 
-c.colors.statusbar.passthrough.bg = 'darkblue'
-c.colors.statusbar.passthrough.fg = 'white'
+c.colors.statusbar.passthrough.bg = colors.base0C
+c.colors.statusbar.passthrough.fg = colors.base00
 
-c.colors.statusbar.private.bg = '#666666'
-c.colors.statusbar.private.fg = 'white'
+c.colors.statusbar.private.bg = colors.base01
+c.colors.statusbar.private.fg = colors.base00
 
-c.colors.statusbar.progress.bg = 'white'
+c.colors.statusbar.progress.bg = colors.base0D
 
-c.colors.statusbar.url.error.fg = 'orange'
-c.colors.statusbar.url.fg = 'white'
-c.colors.statusbar.url.hover.fg = 'aqua'
-c.colors.statusbar.url.success.http.fg = 'white'
-c.colors.statusbar.url.success.https.fg = 'lime'
-c.colors.statusbar.url.warn.fg = 'yellow'
+c.colors.statusbar.url.fg = colors.base05
+c.colors.statusbar.url.error.fg = colors.base08
+c.colors.statusbar.url.hover.fg = colors.base05
+c.colors.statusbar.url.success.http.fg = colors.base0C
+c.colors.statusbar.url.success.https.fg = colors.base0B
+c.colors.statusbar.url.warn.fg = colors.base0E
 
 ## =============================================================================
 ## ========= TABS COLORS =======================================================
 
-c.colors.tabs.bar.bg = '#555555'
-c.colors.tabs.even.bg = 'darkgrey'
-c.colors.tabs.even.fg = 'white'
+c.colors.tabs.bar.bg = colors.base00
 
-c.colors.tabs.indicator.error = '#ff0000'
-c.colors.tabs.indicator.start = '#0000aa'
-c.colors.tabs.indicator.stop = '#00aa00'
-c.colors.tabs.indicator.system = 'rgb'
+c.colors.tabs.even.bg = colors.base01
+c.colors.tabs.even.fg = colors.base05
+c.colors.tabs.odd.bg = colors.base00
+c.colors.tabs.odd.fg = colors.base05
 
-c.colors.tabs.odd.bg = 'grey'
-c.colors.tabs.odd.fg = 'white'
+c.colors.tabs.indicator.error = colors.base08
+c.colors.tabs.indicator.start = colors.base0D
+c.colors.tabs.indicator.stop = colors.base0C
 
-c.colors.tabs.pinned.even.bg = 'darkseagreen'
-c.colors.tabs.pinned.even.fg = 'white'
-c.colors.tabs.pinned.odd.bg = 'seagreen'
-c.colors.tabs.pinned.odd.fg = 'white'
+c.colors.tabs.pinned.even.bg = colors.base0C
+c.colors.tabs.pinned.even.fg = colors.base00
+c.colors.tabs.pinned.odd.bg = colors.base0B
+c.colors.tabs.pinned.odd.fg = colors.base07
 
-c.colors.tabs.pinned.selected.even.bg = 'black'
-c.colors.tabs.pinned.selected.even.fg = 'white'
-c.colors.tabs.pinned.selected.odd.bg = 'black'
-c.colors.tabs.pinned.selected.odd.fg = 'white'
+c.colors.tabs.pinned.selected.even.bg = colors.base02
+c.colors.tabs.pinned.selected.even.fg = colors.base05
+c.colors.tabs.pinned.selected.odd.bg = colors.base02
+c.colors.tabs.pinned.selected.odd.fg = colors.base05
 
-c.colors.tabs.selected.even.bg = 'black'
-c.colors.tabs.selected.even.fg = 'white'
-c.colors.tabs.selected.odd.bg = 'black'
-c.colors.tabs.selected.odd.fg = 'white'
-
-## =============================================================================
-## ========= TOOLTIP COLORS ====================================================
-
-c.colors.tooltip.bg = None
-c.colors.tooltip.fg = None
+c.colors.tabs.selected.even.bg = colors.base02
+c.colors.tabs.selected.even.fg = colors.base05
+c.colors.tabs.selected.odd.bg = colors.base02
+c.colors.tabs.selected.odd.fg = colors.base05
 
 ## =============================================================================
 ## ========= WEBPAGE COLORS ====================================================
@@ -222,7 +216,6 @@ c.colors.webpage.darkmode.threshold.background = 0
 c.colors.webpage.darkmode.threshold.foreground = 256
 
 c.colors.webpage.preferred_color_scheme = 'auto'
-
 
 ## =============================================================================
 ## ========= COMPLETION ========================================================
@@ -293,7 +286,7 @@ c.content.headers.accept_language = 'en-US,en;q=0.9'
 c.content.headers.custom = {}
 c.content.headers.do_not_track = True
 c.content.headers.referer = 'same-domain'
-c.content.headers.user_agent = utils.clean('''
+c.content.headers.user_agent = Utils.remove_whitespace('''
   Mozilla/5.0 ({os_info})
   AppleWebKit/{webkit_version} (KHTML, like Gecko)
   {upstream_browser_key}/{upstream_browser_version_short}
@@ -317,7 +310,7 @@ c.content.javascript.log = {
 }
 c.content.javascript.log_message.excludes = {
   'userscript:_qute_stylesheet': [
-    utils.clean('''
+    Utils.remove_whitespace('''
       *Refused to apply inline style because it violates the following Content
       Security Policy directive: *
     '''),
@@ -371,14 +364,16 @@ c.content.xss_auditing = False
 ## ========= DOWNLOADS SETTINGS ================================================
 
 c.downloads.location.directory = None
-c.downloads.location.prompt = True
-c.downloads.location.remember = True
+c.downloads.location.prompt = False
+c.downloads.location.remember = False
 c.downloads.location.suggestion = 'path'
 
 c.downloads.open_dispatcher = None
-c.downloads.position = 'top'
+c.downloads.position = 'bottom'
 c.downloads.prevent_mixed_content = True
-c.downloads.remove_finished = -1
+
+# Wait for 1 second before removing finished
+c.downloads.remove_finished = 1000
 
 ## =============================================================================
 ## ========= EDITOR SETTINGS ===================================================
@@ -409,8 +404,8 @@ c.fonts.completion.entry = 'default_size default_family'
 c.fonts.contextmenu = None
 c.fonts.debug_console = 'default_size default_family'
 c.fonts.default_family = [
-    "JetBrainsMono Nerd Font",
-    "Noto Sans Mono CJK SC",  # CJK Fallback font.
+  "JetBrainsMono Nerd Font",
+  "Noto Sans Mono CJK SC",  # CJK Fallback font.
 ]
 c.fonts.default_size = '10pt'
 
@@ -683,7 +678,7 @@ c.url.searchengines = {
   'ddg': 'https://duckduckgo.com/search?q={}',
 
   # NixOS search queries.
-  # NOTE: We're using a blank URL as a redirector address for all Nix-related calls.
+  # NOTE: We're using a blank URL as a redirector for all Nix-related calls.
   'nix': 'https://nix.default-redirector/{}',
 
   # Wikipedia search queries.
@@ -712,9 +707,9 @@ c.window.transparent = False
 
 c.zoom.default = '100%'
 c.zoom.levels = [
-    '25%', '33%', '50%', '67%', '75%', '90%', '100%',
-    '110%', '125%', '150%', '175%', '200%', '250%',
-    '300%', '400%', '500%'
+  '25%', '33%', '50%', '67%', '75%', '90%', '100%',
+  '110%', '125%', '150%', '175%', '200%', '250%',
+  '300%', '400%', '500%'
 ]
 c.zoom.mouse_divider = 512
 c.zoom.text_only = False
