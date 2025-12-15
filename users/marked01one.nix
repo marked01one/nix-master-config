@@ -53,7 +53,7 @@ in
     youtube-music
     git
     wget
-    legcord
     chromium
+    discord
   ];
 }
