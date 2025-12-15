@@ -26,9 +26,9 @@ let
         always-center-single-column = true;
 
         preset-column-widths = [
-          { proportion = 1. / 3.; }
-          { proportion = 1. / 2.; }
-          { proportion = 2. / 3.; }
+          { proportion = 1.0 / 3.0; }
+          { proportion = 1.0 / 2.0; }
+          { proportion = 2.0 / 3.0; }
         ];
 
         default-column-display = "tabbed";
@@ -84,6 +84,33 @@ let
           default-column-width.fixed = 480;
           default-window-height.fixed = 270;
         }
+      ];
+
+      binds = with config.lib.niri.actions;
+      let
+        sh = spawn "sh" "-c";
+      in
+      lib.attrsets.mergeAttrsList [
+        {
+
+        }
+        (niri-utils.generate-binds {
+          # List of prefixes.
+          prefixes."Mod" = "focus";
+          prefixes."Mod+Ctrl" = "move";
+          prefixes."Mod+Shift" = "focus-monitor";
+          prefixes."Mod+Shift+Ctrl" = "move-window-to-monitor";
+
+          # List of suffixes.
+          suffixes."Left" = "column-left";
+          suffixes."Down" = "window-down";
+          suffixes."Up" = "window-up";
+          suffixes."Right" = "column-right";
+
+          # List of substitutions.
+          substitutions."monitor-column" = "monitor";
+          substitutions."monitor-window" = "monitor";
+        })
       ];
     };
   };

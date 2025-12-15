@@ -33,12 +33,11 @@
           value.action.${action} = actual-suffix.args;
         };
       pairs = attrs: fn:
-        concatMap (key:
-          fn {
-            inherit key;
-            action = attrs.${key};
-          }
-        ) (builtins.attrNames attrs);
+        concatMap (key: fn {
+          inherit key;  # `key = key;`
+          action = attrs.${key};
+        })
+        (builtins.attrNames attrs);
     in
       builtins.listToAttrs (pairs
         prefixes
