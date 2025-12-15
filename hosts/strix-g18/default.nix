@@ -24,6 +24,7 @@ in {
     ./../../system/default-packages.nix
     ./../../system/docker.nix
     ./../../system/gnome.nix
+    ./../../system/laptop.nix
     ./../../system/neovim.nix
     ./../../system/nh.nix
     ./../../system/nix-ld.nix
