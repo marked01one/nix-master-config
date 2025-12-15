@@ -1,6 +1,6 @@
 # Shell script to retrieve the base16 colorscheme for the current theme.
 
-BASE16_TEXT=$(printenv | grep -oE 'STYLIX_BASE_0[0-9A-F]{1}=#[0-9a-fA-F]{6}' | sort)
+BASE16=$(printenv | grep -oE 'STYLIX_BASE_0[0-9A-F]{1}=#[0-9a-fA-F]{6}' | sort)
 
 function process_color() {
   # Extract the hex code values.
@@ -38,6 +38,6 @@ echo "+---------+---------+"
 
 while read -r color; do
   process_color "$color"
-done <<< "$BASE16_TEXT"
+done <<< "$BASE16"
 
 echo "+---------+---------+"
