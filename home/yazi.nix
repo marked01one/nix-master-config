@@ -21,7 +21,6 @@
     # Avoid out-of-store file installation errors by specifying only Lua files
     # to be symlinked out-of-store.
     ".config/yazi/init.lua".source = ./../dotfiles/yazi/init.lua;
-    ".config/yazi/yazi.toml".source = ./../dotfiles/yazi/yazi.toml;
     ".config/yazi/plugins" = {
       source = ./../dotfiles/yazi/plugins;
       recursive = true;
