@@ -1,7 +1,6 @@
 { config, pkgs, cwd, ... }:
-let
-  dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
-in {
+
+{
   home.packages = with pkgs; [
     fd
     ffmpeg
@@ -22,7 +21,7 @@ in {
     # Avoid out-of-store file installation errors by specifying only Lua files
     # to be symlinked out-of-store.
     ".config/yazi" = {
-      source = "${dotfiles}/yazi";
+      source = ./../dotfiles/yazi;
       recursive = true;
     };
   };

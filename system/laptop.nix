@@ -1,7 +1,12 @@
+# System config for laptops, or devices running on battery in general. Contains
+# power manangement features reactivity to lid switches.
+# Docs: https://wiki.nixos.org/wiki/Laptop
+
 { config, pkgs, ... }:
 
 {
-  services.logind.settings.login = {
+  services.power-profiles-daemon.enable = false;
+  services.logind.settings.Login = {
     HandleLidSwitch = "poweroff";
     HandleLidSwitchExternalPower = "lock";
     HandleLidSwitchDocked = "ignore";
