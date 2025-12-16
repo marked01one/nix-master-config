@@ -1,0 +1,2 @@
+# Disable commit TOML files since we're using Nix for configuration.
+*.toml
