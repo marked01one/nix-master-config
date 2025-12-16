@@ -22,7 +22,7 @@
     # to be symlinked out-of-store.
     ".config/yazi/init.lua".source = ./../dotfiles/yazi/init.lua;
     ".config/yazi/yazi.toml".source = ./../dotfiles/yazi/yazi.toml;
-    ".config/yazi/plugins/" = {
+    ".config/yazi/plugins" = {
       source = ./../dotfiles/yazi/plugins;
       recursive = true;
     };
