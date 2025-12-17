@@ -1,5 +1,1 @@
-local utils = {
-  system = require("utils.system"),
-}
-
-return utils
+/nix/store/5qvg0sll3h9fkxvhkhiy0hc44mi3vjr7-home-manager-files/.config/wezterm/utils/init.lua
