@@ -1,7 +1,4 @@
 { config, pkgs, cwd, ... }:
-let
-  dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
-in
 {
   programs.wezterm = {
     enable = true;
@@ -11,7 +8,7 @@ in
 
   home.file = {
     ".config/wezterm" = {
-      source = "${dotfiles}/wezterm";
+      source = ./../dotfiles/wezterm;
       recursive = true;
     };
   };
