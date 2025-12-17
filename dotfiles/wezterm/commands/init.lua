@@ -1,1 +1,7 @@
-/nix/store/9pzmp584yjna0srpxsf7za8sxy7nxrix-home-manager-files/.config/wezterm/commands/init.lua
+local toggle_transparency = require("commands.toggle-transparency")
+
+local M = {
+  toggle_transparency
+}
+
+return M
