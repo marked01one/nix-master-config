@@ -31,10 +31,5 @@
     '')
     uv  # Using `uv` to generate Python virtual environments.
     python313Packages.jupyterlab
-
-    # Rust.
-    cargo
-    rustc
-    rustup
   ];
 }
