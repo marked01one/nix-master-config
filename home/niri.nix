@@ -1,15 +1,21 @@
-{ config, pkgs, inputs, cwd, ... }:
-let
+{
+  config,
+  pkgs,
+  inputs,
+  cwd,
+  lib,
+  ...
+}: let
   niri-utils = import ./utils/niri.nix;
 
-  settings = {
+  niri-settings = {
     strix-g18 = {
       input = {
         keyboard.xkb.layout = "us";
 
         touchpad = {
-          tap = true;  # Enable tap-to-click.
-          dwt = true;  # Disable trackpad when typing.
+          tap = true; # Enable tap-to-click.
+          dwt = true; # Disable trackpad when typing.
           tap-button-map = "left-right-middle";
           click-method = "clickfinger";
         };
@@ -26,9 +32,9 @@ let
         always-center-single-column = true;
 
         preset-column-widths = [
-          { proportion = 1.0 / 3.0; }
-          { proportion = 1.0 / 2.0; }
-          { proportion = 2.0 / 3.0; }
+          {proportion = 1.0 / 3.0;}
+          {proportion = 1.0 / 2.0;}
+          {proportion = 2.0 / 3.0;}
         ];
 
         default-column-display = "tabbed";
@@ -41,7 +47,7 @@ let
         focus-ring = {
           width = 2;
 
-          active.color = "#7fc8ff";  # TODO: Migrate this value to stylix.
+          active.color = "#7fc8ff"; # TODO: Migrate this value to stylix.
           inactive.color = "#505050"; # TODO: Migrate this value to stylix.
         };
 
@@ -49,11 +55,9 @@ let
           softness = 30;
           spread = 5;
         };
-
       };
 
-      window-rules =
-      let
+      window-rules = let
         # TODO: Migrate this value to stylix.
         # colors = config.lib.stylix.colors.withHashtag;
       in [
@@ -61,17 +65,15 @@ let
         {
           draw-border-with-background = false;
           clip-to-geometry = true;
-          geometry-corner-radius =
-            let
-              # Border radius.
-              r = 8.0;
-            in
-            {
-              top-left = r;
-              top-right = r;
-              bottom-left = r;
-              bottom-right = r;
-            };
+          geometry-corner-radius = let
+            # Border radius.
+            r = 8.0;
+          in {
+            top-left = r;
+            top-right = r;
+            bottom-left = r;
+            bottom-right = r;
+          };
         }
         {
           matches = [
@@ -86,53 +88,61 @@ let
         }
       ];
 
-      binds = with config.lib.niri.actions;
-      let
+      binds = with config.lib.niri.actions; let
         sh = spawn "sh" "-c";
       in
-      lib.attrsets.mergeAttrsList [
-        {
+        lib.attrsets.mergeAttrsList [
+          {
+            "Mod+1" = ["focus-workspace" 1];
+          }
+          (
+            niri-utils.generate-binds {
+              # List of prefixes.
+              prefixes."Mod" = "focus";
+              prefixes."Mod+Ctrl" = "move";
+              prefixes."Mod+Shift" = "focus-monitor";
+              prefixes."Mod+Shift+Ctrl" = "move-window-to-monitor";
 
-        }
-        (niri-utils.generate-binds {
-          # List of prefixes.
-          prefixes."Mod" = "focus";
-          prefixes."Mod+Ctrl" = "move";
-          prefixes."Mod+Shift" = "focus-monitor";
-          prefixes."Mod+Shift+Ctrl" = "move-window-to-monitor";
+              # List of suffixes.
+              suffixes."Left" = "column-left";
+              suffixes."Down" = "window-down";
+              suffixes."Up" = "window-up";
+              suffixes."Right" = "column-right";
 
-          # List of suffixes.
-          suffixes."Left" = "column-left";
-          suffixes."Down" = "window-down";
-          suffixes."Up" = "window-up";
-          suffixes."Right" = "column-right";
+              # List of substitutions.
+              substitutions."monitor-column" = "monitor";
+              substitutions."monitor-window" = "monitor";
+            }
+          )
+          (
+            niri-utils.generate-binds {
+              # List of prefixes.
+              prefixes."Mod" = "focus";
+              prefixes."Mod+Ctrl" = "move-window-to";
 
-          # List of substitutions.
-          substitutions."monitor-column" = "monitor";
-          substitutions."monitor-window" = "monitor";
-        })
-      ];
+              # List of suffixes.
+              suffixes = builtins.listToAttrs (
+                map (n: {
+                  name = toString n;
+                  value = [
+                    "workspace"
+                    (n + 1)
+                  ]; # workspace 1 is empty; workspace 2 is the logical first.
+                }) (lib.range 1 9)
+              );
+            }
+          )
+        ];
     };
   };
-
-  dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
-in
-{
-  imports = [ inputs.niri.homeModules.niri ];
-  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+in {
+  imports = [inputs.niri.homeModules.niri];
+  nixpkgs.overlays = [inputs.niri.overlays.niri];
   programs.niri = {
     enable = true;
     package = pkgs.niri-unstable;
-    settings = null;
+    settings = niri-settings.strix-g18;
   };
-
-  home.file = {
-    ".config/niri" = {
-      source = "${dotfiles}/niri";
-      recursive = true;
-    };
-  };
-
 
   # Declaring addition packages to compliment niri.
   home.packages = with pkgs; [
@@ -142,5 +152,4 @@ in
     fuzzel
     xwayland-satellite
   ];
-
 }

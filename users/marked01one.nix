@@ -55,5 +55,8 @@ in
     wget
     chromium
     discord
+
+    alejandra
+    nixd
   ];
 }
