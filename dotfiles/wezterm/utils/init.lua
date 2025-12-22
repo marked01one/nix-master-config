@@ -1,6 +1,6 @@
 local utils = {
   system = require("utils.system"),
-  theme = require("utils.theme"),
+  theme = require("utils.colors"),
 }
 
 return utils
