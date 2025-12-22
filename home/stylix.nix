@@ -16,7 +16,7 @@ in
     # Disable stylings for specific target apps.
     targets = {
       firefox.enable = false;
-      wezterm.enable = false;
+      wezterm.enable = true;
       gtk.enable = true;
     };
   };

@@ -12,12 +12,6 @@ config.initial_rows = 40
 
 config.line_height = 1.0
 
--- Colors
-config.colors = {
-  cursor_bg = "white",
-  cursor_border = "white"
-}
-
 -- Appearance
 config.window_decorations = "TITLE|RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
