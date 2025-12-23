@@ -1,33 +1,53 @@
-{ config, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
 
-    profiles.marked01one = {
+    profiles.default = {
       extensions = with pkgs.vscode-extensions; [
+        # Formatting & styling.
         fabiospampinato.vscode-highlight
-        kdl-org.kdl-v1
-        keyring.lua
-        ms-python.debugpy
-        sumneko.lua
-        tamasfe.even-better-toml
+        mechatroner.rainbow-csv
+        shardulm94.trailing-spaces
+        pkief.material-icon-theme
+        shd101wyy.markdown-preview-enhanced
         zhuangtongfa.material-theme
 
+        # Tools.
+        vscodevim.vim
+        tyriar.sort-lines
+
+        # Lua.
+        keyring.lua
+        sumneko.lua
+
         # Python extensions.
+        ms-python.debugpy
         ms-python.python
         ms-python.vscode-pylance
         ms-python.vscode-python-envs
-        shd101wyy.markdown-preview-enhanced
-        pkief.material-icon-theme
-        jnoortheen.nix-ide
-        mechatroner.rainbow-csv
-        tyriar.sort-lines
-        shardulm94.trailing-spaces
-        vscodevim.vim
+
+        # Jupyter notebooks.
+        ms-toolsai.jupyter
+        ms-toolsai.jupyter-keymap
+        ms-toolsai.jupyter-renderers
+        ms-toolsai.vscode-jupyter-cell-tags
+        ms-toolsai.vscode-jupyter-slideshow
+
+        # Rust.
         a5huynh.vscode-ron
-        eww-yuck.yuck
+        dustypomerleau.rust-syntax
+        fill-labs.dependi
+        rust-lang.rust-analyzer
+
+        # Go.
+        golang.go
+
+        # Other languages suppport.
         davidanson.vscode-markdownlint
+        eww-yuck.yuck
+        jnoortheen.nix-ide
+        kdl-org.kdl-v1
+        tamasfe.even-better-toml
       ];
 
       # VS Code global snippets for `marked01one`.
@@ -38,7 +58,7 @@
           ];
           description = "Insert a TODO remark.";
           prefix = ["todo"];
-        }
+        };
       };
 
       # VS Code keybindings for `marked01one`.
