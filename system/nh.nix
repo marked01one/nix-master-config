@@ -1,6 +1,8 @@
-{ config, pkgs, cwd, ... }:
-
 {
+  pkgs,
+  cwd,
+  ...
+}: {
   programs.nh = {
     enable = true;
     package = pkgs.nh;

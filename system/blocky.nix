@@ -1,10 +1,6 @@
 # Blocky is a DNS proxy and ad-blocker for the local network written in Go.
 # Docs: https://0xerr0r.github.io/blocky/latest
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   services.blocky = {
     enable = true;
     settings = {

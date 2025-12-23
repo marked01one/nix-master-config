@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{...}: {
   programs.neovim = {
     enable = true;
     withRuby = true;

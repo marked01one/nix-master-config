@@ -1,6 +1,4 @@
-{ config, pkgs, cwd, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     fd
     ffmpeg
@@ -41,8 +39,8 @@
       # https://yazi-rs.github.io/docs/next/configuration/yazi#mgr
       mgr = {
         linemode = "size_and_mtime";
-        mouse_events = [ "click" "scroll" "touch" "move" "drag" ];
-        ratio = [ 1 4 3 ];
+        mouse_events = ["click" "scroll" "touch" "move" "drag"];
+        ratio = [1 4 3];
         scrolloff = 100;
         show_hidden = false;
         show_symlink = false;

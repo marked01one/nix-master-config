@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   fonts = {
     packages = with pkgs; [
       noto-fonts
@@ -10,8 +8,8 @@
 
     fontconfig.enable = true;
     fontconfig.defaultFonts = {
-      serif = [ "Noto Serif Light" ];
-      sansSerif = [ "Noto Sans Light" ];
+      serif = ["Noto Serif Light"];
+      sansSerif = ["Noto Sans Light"];
       monospace = [
         "JetBrainsMono Nerd Font"
         "Noto Sans Mono CJK SC"

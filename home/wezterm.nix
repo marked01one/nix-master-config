@@ -1,5 +1,4 @@
-{ config, pkgs, cwd, ... }:
-{
+{pkgs, ...}: {
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;

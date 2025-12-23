@@ -20,7 +20,7 @@
     };
     # Quickshell flake input.
     quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      url = "github:quickshell-mirror/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Universal themeing framework for NixOS.
@@ -41,32 +41,24 @@
     quickshell,
     stylix,
     ...
-  }@ inputs:
-
-  let
-    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux;
-
+  } @ inputs: let
     cwd = "/Programming/nixos-config";
-    shared-overlays = [
-      (import ./overlays/stable.nix inputs)
-    ];
-  in
-  {
+    shared-overlays = [(import ./overlays/stable.nix inputs)];
+  in {
     # NixOS System-wide configurations. To rebuild after change, run:
     # `nixos-rebuild switch --flake .#$(hostname)`
     nixosConfigurations = {
       # hostname: evo-x1 (to be used on EVO-X1 server)
       evo-x1 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };  # { inputs = inputs; };
-        modules = [ ./hosts/evo-x1/system.nix ];
+        specialArgs = {inherit inputs;}; # { inputs = inputs; };
+        modules = [./hosts/evo-x1/system.nix];
       };
       # hostname: strix-g18 (to be used on ROG Strix G18 gaming laptop)
       strix-g18 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs cwd shared-overlays; };
-        modules = [ ./hosts/strix-g18/default.nix ];
+        specialArgs = {inherit inputs cwd shared-overlays;};
+        modules = [./hosts/strix-g18/default.nix];
       };
     };
 
@@ -83,9 +75,8 @@
           inherit inputs;
           cwd = "/home/marked01one/${cwd}";
         };
-        modules = [ ./users/marked01one.nix ];
+        modules = [./users/marked01one.nix];
       };
     };
-
   };
 }

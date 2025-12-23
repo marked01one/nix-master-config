@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
+{pkgs, ...}: {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # Automatically creates a loader in /lib/* to avoid patching stuff
