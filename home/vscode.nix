@@ -13,6 +13,8 @@
         sumneko.lua
         tamasfe.even-better-toml
         zhuangtongfa.material-theme
+
+        # Python extensions.
         ms-python.python
         ms-python.vscode-pylance
         ms-python.vscode-python-envs

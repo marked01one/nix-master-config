@@ -1,8 +1,10 @@
-{ inputs, pkgs, ... }:
-let
-  username = "marked01one";
-in
 {
+  inputs,
+  pkgs,
+  ...
+}: let
+  username = "marked01one";
+in {
   nixpkgs.config.allowUnfree = true;
   # Username for the user of this home manager
   home.username = username;
@@ -58,5 +60,6 @@ in
 
     alejandra
     nixd
+    nil
   ];
 }
