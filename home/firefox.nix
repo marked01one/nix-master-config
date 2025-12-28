@@ -1,10 +1,13 @@
-{ config, pkgs, cwd, ... }:
-
 {
+  config,
+  pkgs,
+  cwd,
+  ...
+}: {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
-    languagePacks = [ "en-US" "en-GB" "vi-VN" ];
+    languagePacks = ["en-US" "en-GB" "vi-VN"];
 
     # Policy settings for Firefox. For a full list, see here:
     # https://mozilla.github.io/policy-templates/
@@ -24,7 +27,7 @@
             To add extensions, open and edit: `${cwd}/homes/firefox.nix`
           '';
           installation_mode = "blocked";
-          "allowed_types" = [ "extension" ];
+          "allowed_types" = ["extension"];
         };
 
         # UBlock Origin.

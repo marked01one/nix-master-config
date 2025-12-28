@@ -1,6 +1,8 @@
-{ config, pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -11,8 +13,10 @@
     settings = {
       add_newline = false;
       format = lib.concatStrings [
-        "┌──────────────────────────────────────────" "$line_break"
-        "│$username@$hostname $all" "$line_break"
+        "┌──────────────────────────────────────────"
+        "$line_break"
+        "│$username@$hostname $all"
+        "$line_break"
         "└$directory$character"
       ];
       scan_timeout = 10;

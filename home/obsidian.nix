@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # Obsidian is classified as an `unfree` package.
   nixpkgs.config.allowUnfree = true;
   # General settings for Obsidian.

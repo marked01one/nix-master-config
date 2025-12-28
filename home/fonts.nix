@@ -1,12 +1,10 @@
-{ config, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   fonts.fontconfig = {
     enable = true;
     antialiasing = true;
     defaultFonts = {
-      serif = [ "Noto Serif Light" ];
-      sansSerif = [ "Noto Sans Light" ];
+      serif = ["Noto Serif Light"];
+      sansSerif = ["Noto Sans Light"];
       monospace = [
         "JetBrainsMono Nerd Font"
         "Noto Sans Mono CJK SC"

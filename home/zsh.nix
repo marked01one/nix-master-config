@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{config, ...}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -8,7 +6,7 @@
     # Auto-suggestion settings.
     autosuggestion = {
       enable = true;
-      strategy = [ "history" "completion" ];
+      strategy = ["history" "completion"];
     };
 
     # Zsh shell aliases.
@@ -20,7 +18,7 @@
     # Syntax highlighting settings.
     syntaxHighlighting = {
       enable = true;
-      highlighters = [ "main" "brackets" "pattern" ];
+      highlighters = ["main" "brackets" "pattern"];
       patterns = {
         "rm -rf *" = "fg=white,bold,bg=red";
       };

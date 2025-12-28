@@ -1,8 +1,7 @@
-{ config, pkgs, inputs, ... }:
-let
+{inputs, ...}: let
   system = "x86_64-linux";
 in {
-  home.packages = with pkgs; [
+  home.packages = [
     inputs.quickshell.packages.${system}.default
   ];
 }

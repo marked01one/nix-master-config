@@ -1,6 +1,8 @@
-{ config, pkgs, cwd, ... }:
-let
-
+{
+  pkgs,
+  cwd,
+  ...
+}: let
   # For a full list of modules, run: `fastfetch --list-modules`
   modules = [
     "break"
@@ -46,7 +48,6 @@ let
       paddingLeft = 2;
     }
   ];
-
 in {
   programs.fastfetch = {
     enable = true;
@@ -54,13 +55,12 @@ in {
 
     # See https://github.com/fastfetch-cli/fastfetch/wiki/Configuration
     settings = {
-
       logo = {
         source = "${cwd}/assets/fastfetch/luminousslime-002.jpg";
         # Allows for rendering of images as logos in WezTerm.
         type = "kitty-direct";
         width = builtins.floor ((builtins.length modules) * 2.4);
-        height = (builtins.length modules);
+        height = builtins.length modules;
         padding = {
           top = 1;
           left = 1;
@@ -97,7 +97,7 @@ in {
         percent.type = 3;
       };
 
-      inherit modules;  # Equals to `modules = modules;`.
+      inherit modules; # Equals to `modules = modules;`.
     };
   };
 }

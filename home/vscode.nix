@@ -70,6 +70,12 @@
           when = "textInputFocus";
         }
       ];
+
+      # Default user settings.
+      userSettings = {};
     };
   };
+
+  # Default profile for primary user `marked01one`.
+  profiles.marked01one = {};
 }

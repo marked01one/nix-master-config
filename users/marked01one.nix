@@ -44,19 +44,19 @@ in {
   # Packages that does not need configuration.
   home.packages = with pkgs; [
     inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
-    spotdl
-    obsidian
     btop
-    drawio
-    teams-for-linux
-    kew
-    zoom-us
-    vscode
-    youtube-music
-    git
-    wget
     chromium
     discord
+    drawio
+    git
+    kew
+    obsidian
+    spotdl
+    teams-for-linux
+    vscode
+    wget
+    youtube-music
+    zoom-us
 
     alejandra
     nixd

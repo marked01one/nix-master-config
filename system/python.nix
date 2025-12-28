@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # Using nix-ld to run Python scripts.
   programs.nix-ld = {
     enable = true;
@@ -29,7 +27,7 @@
       export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
       exec ${pkgs.python3}/bin/python "$@"
     '')
-    uv  # Using `uv` to generate Python virtual environments.
+    uv # Using `uv` to generate Python virtual environments.
     python313Packages.jupyterlab
   ];
 }

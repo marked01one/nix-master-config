@@ -62,6 +62,16 @@
         image_quality = 70;
         uberzug_scale = 1.5;
       };
+
+      opener = {
+        play = [
+          {
+            run = "mpv %s";
+            orphan = true;
+            for = "unix";
+          }
+        ];
+      };
     };
   };
 }

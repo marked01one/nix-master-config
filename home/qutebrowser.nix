@@ -1,8 +1,12 @@
-{ config, pkgs, cwd, inputs, ... }:
-let
+{
+  config,
+  pkgs,
+  cwd,
+  ...
+}: let
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
 in {
-  home.packages = with pkgs; [ qutebrowser ];
+  home.packages = with pkgs; [qutebrowser];
 
   # Create a symlink for the qutebrowser dotfiles directory at:
   # `$HOME/.config/qutebrowser`
@@ -15,5 +19,4 @@ in {
 
   # Styling using stylix.
   stylix.targets.qutebrowser.enable = true;
-
 }

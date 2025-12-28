@@ -1,8 +1,6 @@
 # For more troubleshooting tips, check out the NixOS wiki:
 # https://wiki.nixos.org/wiki/Jellyfin
-
-{ config, pkgs, ... }:
-{
+{pkgs, ...}: {
   services.jellyfin = {
     enable = true;
     openFirewall = true;
@@ -15,7 +13,7 @@
   ];
 
   # Enable hardware transcoding for Jellyfin instances running on Intel CPUs.
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+  environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";};
   hardware.graphics = {
     enable = true;
 
