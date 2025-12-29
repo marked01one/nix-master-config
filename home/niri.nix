@@ -2,7 +2,6 @@
   config,
   pkgs,
   inputs,
-  cwd,
   lib,
   ...
 }: let
@@ -26,7 +25,9 @@
 
       prefer-no-csd = true;
 
-      layout = {
+      layout = let
+        colors = config.lib.stylix.colors.withHashtag;
+      in {
         gaps = 8;
         center-focused-column = "never";
         always-center-single-column = true;
@@ -47,8 +48,8 @@
         focus-ring = {
           width = 2;
 
-          active.color = "#7fc8ff"; # TODO: Migrate this value to stylix.
-          inactive.color = "#505050"; # TODO: Migrate this value to stylix.
+          active.color = colors.base07;
+          inactive.color = colors.base00;
         };
 
         shadow = {
@@ -58,8 +59,7 @@
       };
 
       window-rules = let
-        # TODO: Migrate this value to stylix.
-        # colors = config.lib.stylix.colors.withHashtag;
+        colors = config.lib.stylix.colors.withHashtag;
       in [
         # Global window rules.
         {
@@ -86,6 +86,15 @@
           default-column-width.fixed = 480;
           default-window-height.fixed = 270;
         }
+        {
+          matches = [
+            {
+              app-id = "^firefox$";
+              title = "^Private Browsing$";
+            }
+          ];
+          border.active.color = colors.base08;
+        }
       ];
 
       binds = with config.lib.niri.actions; let
@@ -93,8 +102,40 @@
       in
         lib.attrsets.mergeAttrsList [
           {
-            "Mod+1" = ["focus-workspace" 1];
+            "Mod+T".action = spawn "wezterm";
+            "Mod+O".action = show-hotkey-overlay;
+
+            # Audio keybinds.
+            "XF86AudioRaiseVolume" = {
+              action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
+              allow-when-locked = true;
+            };
+            "XF86AudioLowerVolume" = {
+              action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
+              allow-when-locked = true;
+            };
+            "XF86AudioMute" = {
+              action = sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+              allow-when-locked = true;
+            };
+            "XF86AudioMicMute" = {
+              action = sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+              allow-when-locked = false;
+            };
+
+            # Monitor brightness keybinds.
+            "XF86MonBrightnessUp".action = sh "brightnessctl set 10%+";
+            "XF86MonBrightnessDown".action = sh "brightnessctl set 10%-";
           }
+          (
+            niri-utils.generate-binds {
+              prefixes."Mod" = "focus-column";
+              prefixes."Mod+Ctrl" = "move-column-to";
+
+              suffixes."Home" = "first";
+              suffixes."End" = "last";
+            }
+          )
           (
             niri-utils.generate-binds {
               # List of prefixes.
@@ -108,6 +149,10 @@
               suffixes."Down" = "window-down";
               suffixes."Up" = "window-up";
               suffixes."Right" = "column-right";
+              suffixes."H" = "column-left";
+              suffixes."J" = "window-down";
+              suffixes."K" = "window-up";
+              suffixes."L" = "column-right";
 
               # List of substitutions.
               substitutions."monitor-column" = "monitor";
@@ -115,6 +160,8 @@
             }
           )
           (
+            # Generate keybinds for `Mod` and `Mod+Ctrl` for all numbered
+            # workspaces (from 1 to 9).
             niri-utils.generate-binds {
               # List of prefixes.
               prefixes."Mod" = "focus";
