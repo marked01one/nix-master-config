@@ -1,10 +1,4 @@
 {pkgs, ...}: {
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
-
   gtk = {
     enable = true;
 
@@ -13,10 +7,5 @@
       package = pkgs.vanilla-dmz;
       size = 16;
     };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme = "gtk";
   };
 }
