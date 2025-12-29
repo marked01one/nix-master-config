@@ -1,18 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
-  config,
   pkgs,
-  inputs,
   shared-overlays,
   ...
-}:
-let
+}: let
   hostname = "strix-g18";
-  shell-scripts = import ./../../system/scripts.nix { inherit pkgs; };
-
+  shell-scripts = import ./../../system/scripts.nix {inherit pkgs;};
 in {
   imports = [
     # System specific modifications.
@@ -63,7 +58,7 @@ in {
   users.users.marked01one = {
     isNormalUser = true;
     description = "marked01one";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
   };
 
@@ -101,7 +96,7 @@ in {
   system.stateVersion = "25.11";
 
   nix.settings = {
-    allowed-users = [ "marked01one" ];
-    experimental-features = [ "nix-command" "flakes" ];
+    allowed-users = ["marked01one"];
+    experimental-features = ["nix-command" "flakes"];
   };
 }

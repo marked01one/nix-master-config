@@ -19,12 +19,14 @@ in {
 
   imports = [
     # Home configuration files.
+    ./../home/btop.nix
     ./../home/eww.nix
     ./../home/eza.nix
     ./../home/fastfetch.nix
     ./../home/firefox.nix
     ./../home/fonts.nix
     ./../home/gtk.nix
+    ./../home/neovim.nix
     ./../home/niri.nix
     ./../home/pandoc.nix
     ./../home/prismlauncher.nix
@@ -40,10 +42,9 @@ in {
     ./../home/zsh.nix
   ];
 
-  # Packages that does not need configuration.
+  # Packages that does not have declarative configuration.
   home.packages = with pkgs; [
     inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
-    btop
     chromium
     discord
     drawio

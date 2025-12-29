@@ -1,8 +1,20 @@
-{
-  config,
-  cwd,
-  ...
-}: let
-  dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
-in {
+{...}: {
+  programs.neovim = {
+    enable = true;
+
+    withRuby = true;
+    withPython3 = true;
+    withNodeJs = true;
+
+    # Symlink `vim` and `vi` to `nvim` binary.
+    vimAlias = true;
+    viAlias = true;
+  };
+
+  home.file = {
+    ".config/nvim" = {
+      source = ./../dotfiles/neovim;
+      recursive = true;
+    };
+  };
 }
