@@ -137,6 +137,8 @@
             }
           )
           (
+            # Generate keybinds for navigation between windows and workspaces
+            # iteratively.
             niri-utils.generate-binds {
               # List of prefixes.
               prefixes."Mod" = "focus";

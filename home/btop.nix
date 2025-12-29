@@ -19,4 +19,11 @@
       graph_symbol = "braille";
     };
   };
+
+  # Do not display `btop++` as a desktop application.
+  xdg.desktopEntries.btop = {
+    type = "Application";
+    name = "btop++";
+    noDisplay = true;
+  };
 }

@@ -17,4 +17,10 @@
       recursive = true;
     };
   };
+
+  # Do not display `Neovim wrapper` as a desktop application.
+  xdg.desktopEntries.neovim = {
+    name = "Neovim wrapper";
+    noDisplay = true;
+  };
 }
