@@ -40,6 +40,7 @@ in {
     ./../home/yt-dlp.nix
     ./../home/zoxide.nix
     ./../home/zsh.nix
+    ./../home/qt.nix
   ];
 
   # Packages that does not have declarative configuration.

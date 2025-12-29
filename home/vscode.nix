@@ -50,6 +50,26 @@
         tamasfe.even-better-toml
       ];
 
+      # Default user settings.
+      userSettings = {
+        # Editor settings.
+        "editor.folding" = true;
+        "editor.formatOnSave" = true;
+        "editor.formatOnSaveMode" = "file";
+        "editor.insertSpaces" = true;
+        "editor.minimap.enabled" = false;
+        "editor.rulers" = [80];
+        "editor.tabCompletion" = "on";
+        "editor.tabSize" = 2;
+        "editor.wordWrap" = "off";
+        "editor.wordWrapColumn" = 80;
+        "editor.wrappingStrategy" = "simple";
+
+        # Workbench settings.
+        "workbench.sideBar.location" = "right";
+        "workbench.activityBar.location" = "top";
+        "workbench.startupEditor" = "readme";
+      };
       # VS Code global snippets for `marked01one`.
       globalSnippets = {
         todo = {
@@ -70,9 +90,6 @@
           when = "textInputFocus";
         }
       ];
-
-      # Default user settings.
-      userSettings = {};
     };
   };
 

@@ -37,6 +37,8 @@ in {
 
         polarity.enable = true;
         polarity.override = "dark";
+
+        useWallpaper = true;
       };
     };
 
