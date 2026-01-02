@@ -1,18 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
-    fd
-    ffmpeg
-    file
-    fzf
-    glow
-    imagemagick
-    jq
-    ouch
-    poppler
-    resvg
-    ripgrep
-    wl-clipboard
-    zoxide
+    tdf
+    mpv
   ];
 
   home.file = {
@@ -33,6 +26,30 @@
     package = pkgs.yazi.override {
       _7zz = pkgs._7zz-rar;
     };
+
+    # Extra packages to make available to yazi.
+    # These packages will be added to the yazi wrapper's PATH.
+    extraPackages = with pkgs; [
+      fd
+      ffmpeg
+      file
+      fzf
+      glow
+      imagemagick
+      jq
+      ouch
+      poppler
+      resvg
+      ripgrep
+      ueberzugpp
+      wl-clipboard
+      zathura
+      zoxide
+
+      tdf
+      mpv
+      kew
+    ];
 
     # Settings in yazi.toml
     settings = {
@@ -63,14 +80,100 @@
         uberzug_scale = 1.5;
       };
 
+      # Specific rules used to open files.
       opener = {
-        play = [
+        music = [
           {
-            run = "mpv %s";
+            run = "wezterm -e kew \"$@\"";
+            orphan = false;
+            block = true;
+            for = "unix";
+          }
+        ];
+        video = [
+          {
+            run = "mpv \"$@\"";
             orphan = true;
             for = "unix";
           }
         ];
+        edit = [
+          {
+            run = "$EDITOR \"$@\"";
+            block = true;
+            for = "unix";
+          }
+        ];
+        pdf = [
+          {
+            run = "tdf \"$@\"";
+            block = true;
+            desc = "PDF viewer";
+            for = "unix";
+          }
+        ];
+      };
+
+      open.rules = let
+        generate-rules = {
+          opener,
+          filters,
+        }: let
+          openers =
+            builtins.genList (x: {use = opener;})
+            (builtins.length filters);
+          zip-fn = use: filter: (lib.mergeAttrs filter use);
+        in
+          lib.zipListsWith zip-fn openers filters;
+      in
+        # Contrary to the Yazi docs, we need to use `{name = "<glob>";}` instead
+        # of `{url = "<glob>";}`.
+        builtins.concatLists [
+          (
+            generate-rules {
+              opener = "pdf";
+              filters = [
+                {mime = "application/pdf";}
+                {name = "*.cbz";}
+                {name = "*.pdf";}
+              ];
+            }
+          )
+          (
+            generate-rules {
+              opener = "music";
+              filters = [
+                {mime = "audio/*";}
+                {name = "*.mp3";}
+              ];
+            }
+          )
+          (
+            generate-rules {
+              opener = "edit";
+              filters = [
+                {mime = "text/*";}
+              ];
+            }
+          )
+          (
+            generate-rules {
+              opener = "video";
+              filters = [
+                {mime = "video/*";}
+                {name = "*.mp4";}
+              ];
+            }
+          )
+        ];
+
+      plugin = {
+        prepend_previewers = [];
+        append_previewers = [];
+      };
+
+      input = {
+        cursor_blink = false;
       };
     };
   };
