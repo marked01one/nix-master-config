@@ -16,7 +16,4 @@ in {
       recursive = true;
     };
   };
-
-  # Styling using stylix.
-  stylix.targets.qutebrowser.enable = true;
 }
