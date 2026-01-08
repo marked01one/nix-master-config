@@ -7,8 +7,8 @@ local config = wezterm.config_builder()
 
 config.enable_wayland = false
 
-config.initial_cols = 80
-config.initial_rows = 40
+config.initial_cols = 120
+config.initial_rows = 50
 
 config.line_height = 1.0
 
