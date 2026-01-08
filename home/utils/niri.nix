@@ -1,6 +1,6 @@
 {
-  # Creates key binding by generating all possible prefix-suffix combinations based on
-  # the inputted suffixes and prefixes.
+  # Creates key binding by generating all possible prefix-suffix combinations
+  # based on the inputted suffixes and prefixes.
   # CODE REFERENCE: https://github.com/sodiboo/system/personal/niri.mod.nix#L31
 
   generate-binds = {
@@ -15,6 +15,8 @@
       (builtins.attrNames substitutions)
       # Substrings for the replacer to replace to.
       (builtins.attrValues substitutions);
+
+    # Format the prefixes and suffixes to generate pairings.
     format = prefix: suffix: let
       actual-suffix =
         if builtins.isList suffix.action
@@ -32,6 +34,8 @@
       name = "${prefix.key}+${suffix.key}";
       value.action.${action} = actual-suffix.args;
     };
+
+    # Pair the generated attribute key with their respective actions as value.
     pairs = attrs: fn:
       builtins.concatMap (key:
         fn {
