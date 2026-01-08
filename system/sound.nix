@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   # Enable bluetooth and bluetooth services
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
