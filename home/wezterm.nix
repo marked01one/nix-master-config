@@ -11,4 +11,6 @@
       recursive = true;
     };
   };
+
+  home.sessionVariables.TERMINAL = "wezterm";
 }

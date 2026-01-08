@@ -3,11 +3,6 @@
   lib,
   ...
 }: {
-  home.packages = with pkgs; [
-    tdf
-    mpv
-  ];
-
   home.file = {
     # Avoid out-of-store file installation errors by specifying only Lua files
     # to be symlinked out-of-store.
@@ -82,15 +77,7 @@
 
       # Specific rules used to open files.
       opener = {
-        music = [
-          {
-            run = "wezterm -e kew \"$@\"";
-            orphan = false;
-            block = true;
-            for = "unix";
-          }
-        ];
-        video = [
+        media = [
           {
             run = "mpv \"$@\"";
             orphan = true;
@@ -141,15 +128,6 @@
           )
           (
             generate-rules {
-              opener = "music";
-              filters = [
-                {mime = "audio/*";}
-                {name = "*.mp3";}
-              ];
-            }
-          )
-          (
-            generate-rules {
               opener = "edit";
               filters = [
                 {mime = "text/*";}
@@ -158,10 +136,12 @@
           )
           (
             generate-rules {
-              opener = "video";
+              opener = "media";
               filters = [
                 {mime = "video/*";}
                 {name = "*.mp4";}
+                {mime = "audio/*";}
+                {name = "*.mp3";}
               ];
             }
           )
@@ -176,5 +156,15 @@
         cursor_blink = false;
       };
     };
+
+    keymap = {
+    };
+  };
+
+  # Launch yazi via wezterm instead.
+  xdg.desktopEntries.yazi = {
+    type = "Application";
+    name = "Yazi";
+    exec = "wezterm -e yazi";
   };
 }
