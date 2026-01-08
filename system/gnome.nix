@@ -1,6 +1,4 @@
-{ config, pkgs, inputs, ... }:
-
-{
+{pkgs, ...}: {
   # As of 25.11
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -10,10 +8,31 @@
   services.gnome.core-apps.enable = true;
   services.gnome.core-developer-tools.enable = false;
   services.gnome.games.enable = false;
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    gnome-user-docs
-  ];
+  environment.gnome.excludePackages =
+    (
+      with pkgs; [
+        gnome-photos
+        gnome-tour
+        gnome-user-docs
+      ]
+    )
+    ++ (
+      with pkgs; [
+        cheese # webcam tool
+        gnome-music
+        gedit # text editor
+        epiphany # web browser
+        geary
+        gnome-characters
+        tali
+        iagno
+        hitori
+        atomix
+        yelp
+        gnome-contacts
+        gnome-initial-setup
+      ]
+    );
 
   # Workaround for GNOME autologin
   # https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
