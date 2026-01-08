@@ -25,6 +25,7 @@ in {
     ./../home/fastfetch.nix
     ./../home/firefox.nix
     ./../home/fonts.nix
+    ./../home/gnome.nix
     ./../home/gtk.nix
     ./../home/neovim.nix
     ./../home/niri.nix
@@ -45,6 +46,7 @@ in {
 
   # Packages that does not have declarative configuration.
   home.packages = with pkgs; [
+    # Flake packages.
     inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
     chromium
     discord
@@ -59,8 +61,12 @@ in {
     youtube-music
     zoom-us
 
+    # Nix IDE Tools.
     alejandra
     nixd
     nil
+
+    # Custom packages.
+    (callPackage ./../packages/bookokrat.nix {})
   ];
 }
