@@ -6,7 +6,7 @@
     "undefined-global",
     "cast-local-type"
   ],
-  "nix.serverPath": "nil",
+  "nix.serverPath": "nixd",
   "nix.serverSettings": {
     "formatting": {
       "command": ["alejandra"],

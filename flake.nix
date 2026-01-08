@@ -52,7 +52,7 @@
       evo-x1 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;}; # { inputs = inputs; };
-        modules = [./hosts/evo-x1/system.nix];
+        modules = [./hosts/evo-x1/default.nix];
       };
       # hostname: strix-g18 (to be used on ROG Strix G18 gaming laptop)
       strix-g18 = nixpkgs.lib.nixosSystem {
