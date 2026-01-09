@@ -67,6 +67,6 @@ in {
     nil
 
     # Custom packages.
-    (callPackage ./../packages/bookokrat.nix {})
+    (callPackage ./../packages/bookokrat/default.nix {})
   ];
 }
