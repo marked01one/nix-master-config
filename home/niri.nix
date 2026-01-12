@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  niri-utils = import ./utils/niri.nix;
+  niri-binds = import ./utils/niri-binds.nix;
 
   niri-settings = {
     strix-g18 = {
@@ -128,7 +128,7 @@
             "XF86MonBrightnessDown".action = sh "brightnessctl set 10%-";
           }
           (
-            niri-utils.generate-binds {
+            niri-binds {
               prefixes."Mod" = "focus-column";
               prefixes."Mod+Ctrl" = "move-column-to";
 
@@ -139,7 +139,7 @@
           (
             # Generate keybinds for navigation between windows and workspaces
             # iteratively.
-            niri-utils.generate-binds {
+            niri-binds {
               # List of prefixes.
               prefixes."Mod" = "focus";
               prefixes."Mod+Ctrl" = "move";
@@ -164,7 +164,7 @@
           (
             # Generate keybinds for `Mod` and `Mod+Ctrl` for all numbered
             # workspaces (from 1 to 9).
-            niri-utils.generate-binds {
+            niri-binds {
               # List of prefixes.
               prefixes."Mod" = "focus";
               prefixes."Mod+Ctrl" = "move-window-to";

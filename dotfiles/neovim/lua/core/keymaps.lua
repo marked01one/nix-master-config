@@ -6,10 +6,10 @@ local keymap = vim.keymap
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>",
+keymap.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>",
   { desc = "Fuzzy find files" }
 )
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>",
+keymap.set("n", "<leader>fs", "<CMD>Telescope live_grep<CR>",
   { desc = "Find string in cwd" }
 )
 
