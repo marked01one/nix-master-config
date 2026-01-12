@@ -7,4 +7,6 @@
 
 # 4. Pop up a commit message editor with generation details as header.
 
-# 5. 
+# 5. Allow user to type in commit description and finalize the commit.
+
+# Run `nixos-rebuild switch` and check results.

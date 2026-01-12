@@ -29,6 +29,7 @@ pkgs.rustPlatform.buildRustPackage rec {
   ];
   nativeBuildInputs = [pkgs.pkg-config];
 
+  # Disable automated tests when building.
   doCheck = false;
 
   meta = with pkgs.lib; {
