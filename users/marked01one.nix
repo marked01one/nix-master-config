@@ -45,28 +45,32 @@ in {
   ];
 
   # Packages that does not have declarative configuration.
-  home.packages = with pkgs; [
-    # Flake packages.
-    inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
-    chromium
-    discord
-    drawio
-    git
-    kew
-    obsidian
-    spotdl
-    teams-for-linux
-    vscode
-    wget
-    youtube-music
-    zoom-us
+  home.packages = with pkgs;
+    [
+      # Flake packages.
+      inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
+      chromium
+      discord
+      drawio
+      git
+      kew
+      obsidian
+      spotdl
+      teams-for-linux
+      vscode
+      wget
+      youtube-music
+      zoom-us
 
-    # Nix IDE Tools.
-    alejandra
-    nixd
-    nil
-
+      # Nix IDE Tools.
+      alejandra
+      nixd
+      nil
+    ]
     # Custom packages.
-    (callPackage ./../packages/bookokrat/default.nix {})
-  ];
+    ++ (
+      builtins.map (x: (pkgs.callPackage ./../packages/${x}/default.nix {})) [
+        "bookokrat"
+      ]
+    );
 }

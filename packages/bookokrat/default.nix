@@ -4,6 +4,7 @@
 # on where config files are sourced from in the code.
 {pkgs}:
 pkgs.rustPlatform.buildRustPackage rec {
+  # Docs for Rust usage in NixOS: https://nixos.org/manual/nixpkgs/stable#rust
   pname = "bookokrat";
   version = "0.2.2";
 
