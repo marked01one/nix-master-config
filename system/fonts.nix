@@ -8,6 +8,8 @@
     ];
 
     fontconfig.enable = true;
+    # Enable emoji rendering on Firefox-based browsers.
+    fontconfig.useEmbeddedBitmaps = true;
     fontconfig.defaultFonts = {
       serif = ["Noto Serif Light"];
       sansSerif = ["Noto Sans Light"];

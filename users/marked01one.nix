@@ -24,7 +24,6 @@ in {
     ./../home/eza.nix
     ./../home/fastfetch.nix
     ./../home/firefox.nix
-    ./../home/fonts.nix
     ./../home/gnome.nix
     ./../home/gtk.nix
     ./../home/neovim.nix

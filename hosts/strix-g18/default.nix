@@ -18,6 +18,7 @@ in {
     # General system configurations.
     ./../../system/default-packages.nix
     ./../../system/docker.nix
+    ./../../system/fonts.nix
     ./../../system/gnome.nix
     ./../../system/laptop.nix
     ./../../system/neovim.nix

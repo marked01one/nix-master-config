@@ -33,10 +33,10 @@
     playlist_style: None,
   ),
   level_styles: (
-    info: (fg: "blue", bg: "black"),
-    warn: (fg: "yellow", bg: "black"),
     error: (fg: "red", bg: "black"),
+    warn: (fg: "yellow", bg: "black"),
     debug: (fg: "light_green", bg: "black"),
+    info: (fg: "blue", bg: "black"),
     trace: (fg: "magenta", bg: "black"),
   ),
   progress_bar: (

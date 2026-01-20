@@ -33,13 +33,16 @@ in {
         enable = true;
         # Disable fonts since we're using the system-provided fonts in
         # {PROJECT_ROOT}/system/fonts.nix
-        fonts.enable = false;
 
         polarity.enable = true;
         polarity.override = "dark";
 
         useWallpaper = true;
       };
+
+      # Disable fontconfig inheritance of Stylix default fonts.
+      fontconfig.enable = true;
+      fontconfig.fonts.enable = false;
     };
 
     fonts = {
