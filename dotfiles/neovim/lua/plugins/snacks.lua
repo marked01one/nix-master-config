@@ -9,6 +9,8 @@ return {
       trash = true,
     },
     picker = {
+      -- Definitions for custom actions
+
       sources = {
         -- File explorer configurations
         explorer = {
