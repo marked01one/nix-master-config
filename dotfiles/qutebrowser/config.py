@@ -548,7 +548,7 @@ c.prompt.radius = 8
 ## =============================================================================
 ## ======== QT SETTINGS ========================================================
 
-c.qt.args = []
+c.qt.args = ['disable-gpu-shader-disk-cache']
 c.qt.chromium.experimental_web_platform_features = 'auto'
 c.qt.chromium.low_end_device_mode = 'auto'
 c.qt.chromium.process_model = 'process-per-site-instance'
@@ -556,7 +556,7 @@ c.qt.chromium.sandboxing = 'enable-all'
 c.qt.environ = {}
 c.qt.force_platform = None
 c.qt.force_platformtheme = None
-c.qt.force_software_rendering = 'none'
+c.qt.force_software_rendering = 'chromium'
 c.qt.highdpi = False
 
 c.qt.workarounds.disable_accelerated_2d_canvas = 'auto'

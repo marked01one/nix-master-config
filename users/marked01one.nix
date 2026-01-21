@@ -48,6 +48,8 @@ in {
     [
       # Flake packages.
       inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
+
+      # Regular packages
       chromium
       discord
       drawio
