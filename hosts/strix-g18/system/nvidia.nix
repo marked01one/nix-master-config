@@ -1,10 +1,8 @@
 # Dedicated Nvidia graphics configuration
 # For more details: https://wiki.nixos.org/wiki/NVIDIA
-{ config, lib, pkgs, modulesPath, ... }:
-
-{
+{pkgs, ...}: {
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+  services.xserver.videoDrivers = ["modesetting" "nvidia"];
   hardware.nvidia.open = true;
 
   # Enable hybrid graphics with PRIME
@@ -19,5 +17,5 @@
   };
 
   # Add additional tools for monitoring Nvidia GPU.
-  environment.systemPackages = with pkgs; [ nvitop ];
+  environment.systemPackages = with pkgs; [nvitop];
 }
