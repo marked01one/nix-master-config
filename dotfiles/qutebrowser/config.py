@@ -26,7 +26,7 @@ c.aliases = {
   'wqa': 'quit --save'
 }
 c.auto_save.interval = 15000
-c.auto_save.session = True
+c.auto_save.session = False
 c.backend = 'webengine'
 
 c.bindings.key_mappings = {
@@ -243,7 +243,7 @@ c.completion.timestamp_format = '%Y-%m-%d %H:%M'
 c.completion.use_best_match = False
 
 c.completion.web_history.exclude = []
-c.completion.web_history.max_items = -1
+c.completion.web_history.max_items = 1000
 
 ## =============================================================================
 ## ========= CONFIRM QUIT ======================================================
@@ -277,7 +277,7 @@ c.content.cookies.store = True
 c.content.default_encoding = 'iso-8859-1'
 c.content.desktop_capture = 'ask'
 c.content.dns_prefetch = True
-c.content.frame_flattening = False
+c.content.frame_flattening = True
 c.content.fullscreen.overlay_timeout = 3000
 c.content.fullscreen.window = False
 c.content.geolocation = 'ask'

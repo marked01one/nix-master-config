@@ -6,9 +6,7 @@
 }: let
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
 in {
-  home.packages = with pkgs; [
-    (qutebrowser.override {enableVulkan = false;})
-  ];
+  home.packages = [(pkgs.qutebrowser.override {enableVulkan = false;})];
 
   # Create a symlink for the qutebrowser dotfiles directory at:
   # `$HOME/.config/qutebrowser`
