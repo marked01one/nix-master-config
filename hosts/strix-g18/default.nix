@@ -9,6 +9,7 @@
   hostname = "strix-g18";
   shell-scripts = import ./../../system/scripts.nix {inherit pkgs;};
 in {
+  # System imports.
   imports = [
     # System specific modifications.
     ./system/hardware.nix
@@ -32,8 +33,10 @@ in {
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    limine.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
   # Networking.
   networking.networkmanager.enable = true;
