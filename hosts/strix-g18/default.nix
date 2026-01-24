@@ -16,6 +16,8 @@ in {
     ./system/home-manager.nix
     ./system/nvidia.nix
 
+    # Bootloader
+
     # General system configurations.
     ./../../system/default-packages.nix
     ./../../system/docker.nix
@@ -36,10 +38,7 @@ in {
   ];
 
   # Bootloader.
-  boot.loader = {
-    limine.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
+  strix-g18.bootloader.name = "limine";
 
   # Networking.
   networking.networkmanager.enable = true;
