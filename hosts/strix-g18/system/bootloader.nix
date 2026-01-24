@@ -4,12 +4,16 @@
   ...
 }: let
   cfg = config.strix-g18.bootloader;
-  expectedPath = ./../../../system/bootloaders + "/${cfg.name}.nix";
+  validBootloaders =
+    lib.mapAttrsToList (k: v: lib.replaceString ".nix" "" k)
+    builtins.readDir
+    ./../../../system/bootloader;
+  expectedPath = ./../../../system/bootloader + "/${cfg.name}.nix";
   pathExists = builtins.pathExists expectedPath;
 in {
   options.strix-g18.bootloader.name = lib.mkOption {
-    type = lib.types.str;
-    description = "Name of the bootloader file in ./system/bootloaders";
+    type = lib.types.enum validBootloaders;
+    description = "Name of the bootloader file in ./system/bootloader";
   };
 
   config.assertions = [
@@ -22,5 +26,5 @@ in {
     }
   ];
 
-  config.boot = lib.mkIf pathExists (import expectedPath);
+  config.boot = lib.mkIf pathExists (import expectedPath {}).boot;
 }

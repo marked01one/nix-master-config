@@ -15,6 +15,7 @@ in {
     ./system/hardware.nix
     ./system/home-manager.nix
     ./system/nvidia.nix
+    ./system/bootloader.nix
 
     # Bootloader
 
