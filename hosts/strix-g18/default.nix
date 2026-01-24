@@ -25,11 +25,14 @@ in {
     ./../../system/neovim.nix
     ./../../system/nh.nix
     ./../../system/nix-ld.nix
-    ./../../system/python.nix
-    ./../../system/rust.nix
     ./../../system/sound.nix
     ./../../system/steam.nix
     ./../../system/zsh.nix
+
+    # Programming languages
+    ./../../system/java.nix
+    ./../../system/python.nix
+    ./../../system/rust.nix
   ];
 
   # Bootloader.
