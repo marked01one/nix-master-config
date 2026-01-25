@@ -7,6 +7,10 @@
       wallpapers = [./../../assets/wallpapers/tumblr-fishbloc-001.jpg];
 
       graphicalTerminal = {
+        font = {
+          spacing = 0;
+          scale = "2x2";
+        };
       };
     };
   };
