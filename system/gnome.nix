@@ -14,6 +14,12 @@
         gnome-photos
         gnome-tour
         gnome-user-docs
+        gnome-text-editor
+        gnome-weather
+        gnome-calendar
+        gnome-calculator
+        gnome-console
+        gnome-maps
       ]
     )
     ++ (
