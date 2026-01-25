@@ -1,13 +1,13 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.strix-g18.bootloader;
   validBootloaders =
     lib.mapAttrsToList (k: v: lib.replaceString ".nix" "" k)
-    builtins.readDir
-    ./../../../system/bootloader;
+    (builtins.readDir ./../../../system/bootloader);
   expectedPath = ./../../../system/bootloader + "/${cfg.name}.nix";
   pathExists = builtins.pathExists expectedPath;
 in {
@@ -26,5 +26,7 @@ in {
     }
   ];
 
-  config.boot = lib.mkIf pathExists (import expectedPath {}).boot;
+  config.boot =
+    lib.mkIf pathExists
+    (import expectedPath {inherit pkgs lib;}).boot;
 }

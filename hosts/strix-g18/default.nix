@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
+  lib,
   shared-overlays,
   ...
 }: let
@@ -10,33 +11,30 @@
   shell-scripts = import ./../../system/scripts.nix {inherit pkgs;};
 in {
   # System imports.
-  imports = [
-    # System specific modifications.
-    ./system/hardware.nix
-    ./system/home-manager.nix
-    ./system/nvidia.nix
-    ./system/bootloader.nix
+  imports =
+    (
+      # System specific modifications.
+      lib.mapAttrsToList (k: v: ./system + "/${k}") (builtins.readDir ./system)
+    )
+    ++ [
+      # General system configurations.
+      ./../../system/default-packages.nix
+      ./../../system/docker.nix
+      ./../../system/fonts.nix
+      ./../../system/gnome.nix
+      ./../../system/laptop.nix
+      ./../../system/neovim.nix
+      ./../../system/nh.nix
+      ./../../system/nix-ld.nix
+      ./../../system/sound.nix
+      ./../../system/steam.nix
+      ./../../system/zsh.nix
 
-    # Bootloader
-
-    # General system configurations.
-    ./../../system/default-packages.nix
-    ./../../system/docker.nix
-    ./../../system/fonts.nix
-    ./../../system/gnome.nix
-    ./../../system/laptop.nix
-    ./../../system/neovim.nix
-    ./../../system/nh.nix
-    ./../../system/nix-ld.nix
-    ./../../system/sound.nix
-    ./../../system/steam.nix
-    ./../../system/zsh.nix
-
-    # Programming languages
-    ./../../system/java.nix
-    ./../../system/python.nix
-    ./../../system/rust.nix
-  ];
+      # Programming languages
+      ./../../system/java.nix
+      ./../../system/python.nix
+      ./../../system/rust.nix
+    ];
 
   # Bootloader.
   strix-g18.bootloader.name = "limine";
@@ -80,28 +78,6 @@ in {
     print-theme
     fcp
   ];
-
-  # Periodic storage optimizations.
-  nix.optimise.automatic = true;
-  nix.optimise.dates = ["03:45"];
-
-  # Garbage collection.
-  nix.gc =
-    if !pkgs.stdenv.isDarwin
-    then {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 14d";
-    }
-    else {
-      automatic = true;
-      interval = {
-        Weekday = 0;
-        Hour = 0;
-        Minute = 0;
-      };
-      options = "--delete-older-than 14d";
-    };
 
   system.stateVersion = "25.11";
 
