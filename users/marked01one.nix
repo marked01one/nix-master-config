@@ -5,7 +5,6 @@
 }: let
   username = "marked01one";
 in {
-  nixpkgs.config.allowUnfree = true;
   # Username for the user of this home manager
   home.username = username;
 
@@ -16,6 +15,9 @@ in {
 
   # Enable Home Manager
   programs.home-manager.enable = true;
+
+  # Enable unfree packages.
+  nixpkgs.config.allowUnfree = true;
 
   imports = [
     # Home configuration files.
@@ -58,8 +60,8 @@ in {
       obsidian
       spotdl
       teams-for-linux
+      tokei
       vscode
-      wget
       youtube-music
       zoom-us
 
