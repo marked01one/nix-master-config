@@ -3,31 +3,42 @@
 
   # Flake inputs
   inputs = {
-    # Unstable (i.e., rolling release) channel
+    ###################### Official NixOS Package Sources ######################
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Latest stable release (25.05) channel
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
-    # Home Manager flake input
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ############################### Utilities ###############################
+
     # Niri flake input.
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # Quickshell flake input.
     quickshell = {
       url = "github:quickshell-mirror/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # Universal themeing framework for NixOS.
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Secrets management.
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Zen Browser flake input.
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
