@@ -3,5 +3,6 @@
     curl
     git
     wget
+    sops
   ];
 }
