@@ -64,6 +64,7 @@ in {
       vscode
       youtube-music
       zoom-us
+      ltspice
 
       # Nix IDE Tools.
       alejandra
