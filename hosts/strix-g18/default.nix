@@ -37,7 +37,7 @@ in {
     ];
 
   # Bootloader.
-  strix-g18.bootloader.name = "limine";
+  strix-g18.bootloader.name = "grub";
 
   # Networking.
   networking.networkmanager.enable = true;

@@ -65,6 +65,7 @@ in {
       youtube-music
       zoom-us
       ltspice
+      efibootmgr
 
       # Nix IDE Tools.
       alejandra

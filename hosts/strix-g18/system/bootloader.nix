@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   cfg = config.strix-g18.bootloader;
@@ -28,5 +27,5 @@ in {
 
   config.boot =
     lib.mkIf pathExists
-    (import expectedPath {inherit pkgs lib;}).boot;
+    (import expectedPath {inherit lib;}).boot;
 }
