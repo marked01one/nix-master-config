@@ -66,6 +66,7 @@ in {
       zoom-us
       ltspice
       efibootmgr
+      unityhub
 
       # Nix IDE Tools.
       alejandra
