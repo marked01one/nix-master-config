@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: let
   username = "marked01one";
@@ -12,6 +13,18 @@ in {
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "26.05";
   home.enableNixpkgsReleaseCheck = false;
+
+  # Enable specific environment variables.
+  home.sessionVariables = {
+    EDITOR =
+      if config.programs.neovim.enable
+      then "nvim"
+      else "";
+    VISUAL =
+      if config.programs.vscode.enable
+      then "code --wait"
+      else "";
+  };
 
   # Enable Home Manager
   programs.home-manager.enable = true;
