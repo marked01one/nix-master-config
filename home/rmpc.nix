@@ -1,10 +1,15 @@
-{ config, pkgs, cwd, ... }:
-let
+{
+  config,
+  pkgs,
+  cwd,
+  ...
+}: let
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${cwd}/dotfiles";
 in {
   home.packages = with pkgs; [
     rmpc
     mpd
+    cava
   ];
 
   home.file = {
@@ -22,6 +27,13 @@ in {
       audio_output {
         type "pipewire"
         name "PipeWire Output"
+      }
+
+      audio_output {
+        type "fifo"
+        name "rmpc fifo for cava"
+        path "/tmp/mpd.fifo"
+        format "44100:16:2"
       }
     '';
   };
