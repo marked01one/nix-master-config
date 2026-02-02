@@ -29,6 +29,7 @@ in {
       ./../../system/sound.nix
       ./../../system/steam.nix
       ./../../system/zsh.nix
+      ./../../system/ollama.nix
 
       # Programming languages
       ./../../system/java.nix
