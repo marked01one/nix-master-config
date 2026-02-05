@@ -21,6 +21,10 @@ in {
     # Disable stylings for specific target apps.
     targets = {
       firefox.enable = false;
+      zen-browser = {
+        enable = true;
+        profileNames = ["marked01one"];
+      };
       wezterm.enable = true;
       gtk = {
         enable = true;
