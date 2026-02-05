@@ -45,6 +45,7 @@ in {
     ./../home/niri.nix
     ./../home/pandoc.nix
     ./../home/prismlauncher.nix
+    ./../home/qt.nix
     ./../home/quickshell.nix
     ./../home/qutebrowser.nix
     ./../home/rmpc.nix
@@ -53,17 +54,14 @@ in {
     ./../home/wezterm.nix
     ./../home/yazi.nix
     ./../home/yt-dlp.nix
+    ./../home/zen-browser.nix
     ./../home/zoxide.nix
     ./../home/zsh.nix
-    ./../home/qt.nix
   ];
 
   # Packages that does not have declarative configuration.
   home.packages = with pkgs;
     [
-      # Flake packages.
-      inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
-
       # Regular packages
       chromium
       discord
