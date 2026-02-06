@@ -79,7 +79,7 @@
         "zen.tabs.vertical" = true;
         "zen.tabs.vertical.right-side" = true;
         "zen.widget.linux.transparency" = true;
-        "browser.tabs.allow_transparent_browser" = false;
+        "browser.tabs.allow_transparent_browser" = true;
       };
     };
   };
