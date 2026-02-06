@@ -38,14 +38,27 @@
 
         settings = {
           communityPlugins = [
-            {
-            }
           ];
         };
       };
       NixOS = {
         enable = true;
         target = "/Documents/Obsidian/NixOS";
+        settings = {
+          communityPlugins = [
+            {
+              pkg = pkgs.callPackage ./obsidian/dataview.nix {};
+              enable = true;
+              settings = {
+                enableDataviewJs = true;
+                enableInlineDataviewJs = true;
+                warnOnEmptyResult = true;
+                defaultDateFormat = "dd/MM/yyyy";
+                defaultDateTimeFormat = "HH:mm - dd/MM/yyyy";
+              };
+            }
+          ];
+        };
       };
     };
   };

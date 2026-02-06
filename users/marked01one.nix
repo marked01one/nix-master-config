@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   ...
@@ -43,6 +42,7 @@ in {
     ./../home/gtk.nix
     ./../home/neovim.nix
     ./../home/niri.nix
+    ./../home/obsidian.nix
     ./../home/pandoc.nix
     ./../home/prismlauncher.nix
     ./../home/qt.nix
@@ -68,7 +68,7 @@ in {
       drawio
       git
       kew
-      obsidian
+      # obsidian
       spotdl
       teams-for-linux
       tokei
