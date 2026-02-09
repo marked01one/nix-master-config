@@ -33,6 +33,7 @@ in {
 
   imports = [
     # Home configuration files.
+    ./../home/bat.nix
     ./../home/btop.nix
     ./../home/eww.nix
     ./../home/eza.nix
@@ -68,7 +69,6 @@ in {
       drawio
       git
       kew
-      # obsidian
       spotdl
       teams-for-linux
       tokei
