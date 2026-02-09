@@ -25,6 +25,18 @@
 
       prefer-no-csd = true;
 
+      outputs = {
+        "eDP-1" = {
+          mode = {
+            width = 2560;
+            height = 1600;
+            refresh = 240.0;
+          };
+          scale = 1.0;
+          transform.rotation = 0;
+        };
+      };
+
       layout = let
         colors = config.lib.stylix.colors.withHashtag;
       in {
@@ -197,7 +209,7 @@ in {
     wayland-utils
     gamescope
     fuzzel
-    xwayland-satellite
+    xwayland-satellite # Xwayland outside your Wayland compositor.
 
     brightnessctl # Read and control device brightness.
   ];
