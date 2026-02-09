@@ -13,6 +13,10 @@
     shellAliases = {
       nurse = "sudo nixos-rebuild switch --flake .#$(hostname)";
       homes = "home-manager switch --flake .#$(whoami)@$(hostname)";
+      cat =
+        if config.programs.bat.enable
+        then "bat"
+        else "cat";
     };
 
     # Syntax highlighting settings.

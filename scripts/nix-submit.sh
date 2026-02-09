@@ -1,7 +1,9 @@
 
 # 1. Open neovim to edit configuration.
 
-# 2. Format with `alejandra` and display condensed git diff.
+# 2. Format with `alejandra` and display condensed git diff. Alongside other
+#    ergonomic features:
+#      + Regex replace "<sha256-placeholder>" with an actual SHA256 placeholder.
 
 # 3. Get current generation details and include it in commit message.
 

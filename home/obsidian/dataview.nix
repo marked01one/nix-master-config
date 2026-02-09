@@ -1,18 +1,17 @@
 {pkgs ? import <nixpkgs> {}}: let
+  pname = "obsidian-dataview";
   version = "0.5.68";
   owner = "blacksmithgu";
-  repo = "obsidian-dataview";
 
   # Helper to fetch assets from the GitHub release
   fetchAsset = name: hash:
     pkgs.fetchurl {
-      url = "https://github.com/${owner}/${repo}/releases/download/${version}/${name}";
+      url = "https://github.com/${owner}/${pname}/releases/download/${version}/${name}";
       sha256 = hash;
     };
 in
   pkgs.stdenv.mkDerivation {
-    pname = "obsidian-dataview";
-    inherit version;
+    inherit version pname;
 
     # Define the three files as separate inputs
     mainJs =

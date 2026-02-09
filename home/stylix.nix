@@ -20,11 +20,15 @@ in {
 
     # Disable stylings for specific target apps.
     targets = {
+      # Disable stylix themeing for Firefox.
       firefox.enable = false;
+
       zen-browser = {
         enable = true;
         profileNames = ["marked01one"];
       };
+
+      # Enable stylix themeing for wezterm.
       wezterm.enable = true;
       gtk = {
         enable = true;
@@ -48,7 +52,11 @@ in {
       fontconfig.enable = true;
       fontconfig.fonts.enable = false;
 
+      # Enable stylix themeing for Obsidian.
       obsidian.enable = true;
+
+      # Enable stylix themeing for bat.
+      bat.enable = true;
     };
 
     fonts = {
