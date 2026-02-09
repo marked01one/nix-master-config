@@ -173,10 +173,8 @@
               suffixes = builtins.listToAttrs (
                 map (n: {
                   name = toString n;
-                  value = [
-                    "workspace"
-                    (n + 1)
-                  ]; # workspace 1 is empty; workspace 2 is the logical first.
+                  # workspace 1 is empty; workspace 2 is the logical first.
+                  value = ["workspace" (n + 1)];
                 }) (lib.range 1 9)
               );
             }
@@ -200,5 +198,7 @@ in {
     gamescope
     fuzzel
     xwayland-satellite
+
+    brightnessctl # Read and control device brightness.
   ];
 }
