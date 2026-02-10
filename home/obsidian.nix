@@ -4,7 +4,7 @@
   # Obsidian community plugins declarations.
   plugins = {
     dataview = {
-      pkg = pkgs.callPackage ./obsidian/dataview.nix {};
+      pkg = pkgs.callPackage ./obsidian/dataview.nix {inherit pkgs;};
       enable = true;
       settings = {
         enableDataviewJs = true;
@@ -16,7 +16,7 @@
     };
 
     calendar = {
-      pkg = pkgs.callPackage ./obsidian/calendar.nix {};
+      pkg = pkgs.callPackage ./obsidian/calendar.nix {inherit pkgs;};
       enable = true;
       settings = {
         shouldConfirmBeforeCreate = true;
@@ -24,6 +24,12 @@
         wordsPerDot = 250;
         showWeeklyNote = false;
       };
+    };
+
+    excalidraw = {
+      pkg = pkgs.callPackage ./obsidian/excalidraw.nix {inherit pkgs;};
+      enable = true;
+      settings = {};
     };
   };
 in {
