@@ -1,4 +1,4 @@
-{pkgs ? import <nixpkgs> {}}: let
+{pkgs, ...}: let
   pname = "obsidian-dataview";
   version = "0.5.68";
   owner = "blacksmithgu";
@@ -14,20 +14,17 @@ in
     inherit version pname;
 
     # Define the three files as separate inputs
-    mainJs =
-      fetchAsset "main.js" "sha256-eU6ert5zkgu41UsO2k9d4hgtaYzGOHdFAPJPFLzU2gs=";
-    manifestJson =
-      fetchAsset "manifest.json" "sha256-kjXbRxEtqBuFWRx57LmuJXTl5yIHBW6XZHL5BhYoYYU=";
-    stylesCss =
-      fetchAsset "styles.css" "sha256-MwbdkDLgD5ibpyM6N/0lW8TT9DQM7mYXYulS8/aqHek=";
+    main = fetchAsset "main.js" "sha256-eU6ert5zkgu41UsO2k9d4hgtaYzGOHdFAPJPFLzU2gs=";
+    manifest = fetchAsset "manifest.json" "sha256-kjXbRxEtqBuFWRx57LmuJXTl5yIHBW6XZHL5BhYoYYU=";
+    styles = fetchAsset "styles.css" "sha256-MwbdkDLgD5ibpyM6N/0lW8TT9DQM7mYXYulS8/aqHek=";
 
     # We don't need to unpack anything since we fetched raw files
     phases = ["installPhase"];
 
     installPhase = ''
       mkdir -p $out
-      cp $mainJs $out/main.js
-      cp $manifestJson $out/manifest.json
-      cp $stylesCss $out/styles.css
+      cp $main $out/main.js
+      cp $manifest $out/manifest.json
+      cp $styles $out/styles.css
     '';
   }

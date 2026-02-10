@@ -1,6 +1,6 @@
-{pkgs ? import <nixpkgs> {}}: let
+{pkgs, ...}: let
   pname = "obsidian-calendar-plugin";
-  version = "2.0.0-beta.2";
+  version = "1.5.10";
   owner = "liamcain";
 
   # Helper to fetch assets from the GitHub release
@@ -14,9 +14,8 @@ in
     inherit version pname;
 
     # Define the three files as separate inputs
-    main = fetchAsset "main.js" "sha256-eU6ert5zkgu41UsO2k9d4hgtaYzGOHdFAPJPFLzU2gs=";
-    manifest = fetchAsset "manifest.json" "sha256-kjXbRxEtqBuFWRx57LmuJXTl5yIHBW6XZHL5BhYoYYU=";
-    styles = fetchAsset "styles.css" "sha256-MwbdkDLgD5ibpyM6N/0lW8TT9DQM7mYXYulS8/aqHek=";
+    main = fetchAsset "main.js" "sha256-f7M56c+f2+WoAforirhbNmtbN3f70ZPLyHKLwncR0SU=";
+    manifest = fetchAsset "manifest.json" "sha256-8+lYEzhkhRK6oS1bRYSQ9/02eRj3vba9hhcc5Xvn0Is=";
 
     # We don't need to unpack anything since we fetched raw files
     phases = ["installPhase"];
@@ -25,6 +24,5 @@ in
       mkdir -p $out
       cp $main $out/main.js
       cp $manifest $out/manifest.json
-      cp $styles $out/styles.css
     '';
   }

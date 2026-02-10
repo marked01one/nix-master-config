@@ -1,6 +1,32 @@
 # Note-taking app and text editor.
 # Options: https://home-manager-options.extranix.com/?query=obsidian&release=master
-{pkgs, ...}: {
+{pkgs, ...}: let
+  # Obsidian community plugins declarations.
+  plugins = {
+    dataview = {
+      pkg = pkgs.callPackage ./obsidian/dataview.nix {};
+      enable = true;
+      settings = {
+        enableDataviewJs = true;
+        enableInlineDataviewJs = true;
+        warnOnEmptyResult = true;
+        defaultDateFormat = "dd/MM/yyyy";
+        defaultDateTimeFormat = "HH:mm - dd/MM/yyyy";
+      };
+    };
+
+    calendar = {
+      pkg = pkgs.callPackage ./obsidian/calendar.nix {};
+      enable = true;
+      settings = {
+        shouldConfirmBeforeCreate = true;
+        weekStart = "locale";
+        wordsPerDot = 250;
+        showWeeklyNote = false;
+      };
+    };
+  };
+in {
   # Obsidian is classified as an `unfree` package.
   nixpkgs.config.allowUnfree = true;
   # General settings for Obsidian.
@@ -35,9 +61,10 @@
       Notes = {
         enable = true;
         target = "/Documents/Obsidian/Notes";
-
         settings = {
-          communityPlugins = [
+          communityPlugins = with plugins; [
+            dataview
+            calendar
           ];
         };
       };
@@ -45,18 +72,8 @@
         enable = true;
         target = "/Documents/Obsidian/NixOS";
         settings = {
-          communityPlugins = [
-            {
-              pkg = pkgs.callPackage ./obsidian/dataview.nix {};
-              enable = true;
-              settings = {
-                enableDataviewJs = true;
-                enableInlineDataviewJs = true;
-                warnOnEmptyResult = true;
-                defaultDateFormat = "dd/MM/yyyy";
-                defaultDateTimeFormat = "HH:mm - dd/MM/yyyy";
-              };
-            }
+          communityPlugins = with plugins; [
+            dataview
           ];
         };
       };
