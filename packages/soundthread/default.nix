@@ -1,6 +1,6 @@
 {pkgs ? import <nixpkgs> {}}: let
   dot2hyphen = x: builtins.replaceStrings ["."] ["-"] x;
-  github-link = "https://j-p-higgins/SoundThread";
+  github-link = "https://github.com/j-p-higgins/SoundThread";
 in
   pkgs.stdenv.mkDerivation rec {
     pname = "soundthread";
@@ -8,7 +8,7 @@ in
 
     src = pkgs.fetchurl {
       url = "${github-link}/releases/download/v${version}/SoundThread_v${dot2hyphen version}_linux_x86_64.tar.gz";
-      sha256 = "sha256-ZKvUpYrtCWzHM0naCRnaCSlliUXAMArIZGcJ4m+gqzk=";
+      sha256 = "sha256-aJlpMVXElBMWuvVGsPe0BufeAWPjKoFcxOhlrMkbHwk=";
     };
 
     installPhase = ''
