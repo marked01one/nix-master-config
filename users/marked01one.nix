@@ -78,6 +78,7 @@ in {
       ltspice
       efibootmgr
       unityhub
+      reaper
 
       # Nix IDE Tools.
       alejandra
@@ -88,6 +89,7 @@ in {
     ++ (
       builtins.map (x: (pkgs.callPackage ./../packages/${x}/default.nix {})) [
         "bookokrat"
+        "soundthread"
       ]
     );
 }
