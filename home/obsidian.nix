@@ -40,27 +40,39 @@ in {
   programs.obsidian.package = pkgs.obsidian;
 
   programs.obsidian = {
-    defaultSettings = {
-      corePlugins = [
-        "backlink"
-        "bookmarks"
-        "canvas"
-        "command-palette"
-        "daily-notes"
-        "editor-status"
-        "file-explorer"
-        "file-recovery"
-        "global-search"
-        "graph"
-        "note-composer"
-        "outgoing-link"
-        "outline"
-        "page-preview"
-        "switcher"
-        "tag-pane"
-        "templates"
-        "word-count"
-      ];
+    defaultSettings.corePlugins = [
+      "backlink"
+      "bookmarks"
+      "canvas"
+      "command-palette"
+      "daily-notes"
+      "editor-status"
+      "file-explorer"
+      "file-recovery"
+      "global-search"
+      "graph"
+      "note-composer"
+      "outgoing-link"
+      "outline"
+      "page-preview"
+      "switcher"
+      "tag-pane"
+      "templates"
+      "word-count"
+    ];
+
+    defaultSettings.cssSnippets = [
+      ./obsidian/snippets/center-image.css
+      ./obsidian/snippets/readable-pdf.css
+    ];
+
+    defaultSettings.appearance = {
+      interfaceFontFamily = "JetBrainsMono Nerd Font";
+      textFontFamily = "JetBrainsMono Nerd Font";
+      monospaceFontFamily = "JetBrainsMono Nerd Font";
+      showViewHeader = true;
+      baseFontSize = 12;
+      nativeMenus = false;
     };
 
     vaults = {

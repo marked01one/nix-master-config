@@ -53,7 +53,7 @@ in {
       fontconfig.fonts.enable = false;
 
       # Enable stylix themeing for Obsidian.
-      obsidian.enable = true;
+      obsidian.enable = false;
 
       # Enable stylix themeing for bat.
       bat.enable = true;
