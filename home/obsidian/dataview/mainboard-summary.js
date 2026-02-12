@@ -3,15 +3,15 @@ const pages = dv.pages();
 
 const WORDCOUNT_ERROR = (file) => `
 	Failed to get wordcount for "${file}"!
-	Check console (Ctrl + Shift + I) for more details
+	Check console (Ctrl + Shift + I) for more details.
 `;
 
 const getLastUpdated = (mtime) => {
 	let now = new Date();
 	const diff = (now-mtime) / (1000);
 	if (diff <= 60) return `${Math.round(diff)} seconds ago`;
-	else if (diff <= 3600) return `${Math.round(diff/60)} minutes ago`;
-	else if (diff <= 86400) return `${Math.round(diff/3600)} hours ago`;
+	if (diff <= 3600) return `${Math.round(diff/60)} minutes ago`;
+	if (diff <= 86400) return `${Math.round(diff/3600)} hours ago`;
 	return `${Math.round(diff/86400)} days ago`;
 }
 
@@ -28,8 +28,7 @@ for (let i = 0; i < pages.length; i++) {
 		wordCount.set(name, pageWordCount);
 	}
 	catch (e) {
-		// Case where the DataView query fails to get wordcount for
-		// specific page
+		// Case where the DataView query fails to get wordcount for specific page
 		if (e.name === "TypeError") {
 			console.log(e);
 			throw new Error(WORDCOUNT_ERROR(pages[i].file.path));

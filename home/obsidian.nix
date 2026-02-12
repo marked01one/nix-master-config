@@ -32,6 +32,14 @@
       settings = {};
     };
   };
+
+  # Obsidian themes declarations.
+  themes = {
+    tokyonight = {
+      pkg = pkgs.callPackage ./obsidian/tokyo-night.nix {inherit pkgs;};
+      enable = true;
+    };
+  };
 in {
   # Obsidian is classified as an `unfree` package.
   nixpkgs.config.allowUnfree = true;
@@ -66,6 +74,22 @@ in {
       ./obsidian/snippets/readable-pdf.css
     ];
 
+    defaultSettings.app = {
+      showInlineTitle = false;
+      vimMode = true;
+      strictLineBreaks = true;
+      showLineNumber = true;
+      readableLineLength = true;
+      alwaysUpdateLinks = true;
+      pdfExportSettings = {
+        pageSize = "letter";
+        landscape = false;
+        margin = "0";
+        downscalePercent = 75;
+      };
+      tabSize = 2;
+    };
+
     defaultSettings.appearance = {
       interfaceFontFamily = "JetBrainsMono Nerd Font";
       textFontFamily = "JetBrainsMono Nerd Font";
@@ -83,6 +107,10 @@ in {
           communityPlugins = with plugins; [
             dataview
             calendar
+          ];
+
+          themes = with themes; [
+            tokyonight
           ];
         };
       };
