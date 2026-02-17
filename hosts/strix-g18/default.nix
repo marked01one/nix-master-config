@@ -40,6 +40,9 @@ in {
   # Bootloader.
   strix-g18.bootloader.name = "grub";
 
+  # Prevent kayboard latency but disabling autosuspending.
+  boot.kernelParams = ["usbcore.autosuspend=-1"];
+
   # Networking.
   networking.networkmanager.enable = true;
   networking.dhcpcd.setHostname = false;
