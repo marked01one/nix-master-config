@@ -79,6 +79,7 @@ in {
       efibootmgr
       unityhub
       reaper
+      jq
 
       # Nix IDE Tools.
       alejandra
