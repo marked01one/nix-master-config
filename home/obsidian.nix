@@ -31,6 +31,12 @@
       enable = true;
       settings = {};
     };
+
+    better-export-pdf = {
+      pkg = pkgs.callPackage ./obsidian/better-export-pdf.nix {inherit pkgs;};
+      enable = true;
+      settings = {};
+    };
   };
 
   # Obsidian themes declarations.
@@ -107,6 +113,7 @@ in {
           communityPlugins = with plugins; [
             dataview
             calendar
+            better-export-pdf
           ];
 
           themes = with themes; [
