@@ -80,6 +80,8 @@ in {
       vscode
       youtube-music
       zoom-us
+      presenterm
+      libreoffice
 
       # Nix IDE Tools.
       alejandra
