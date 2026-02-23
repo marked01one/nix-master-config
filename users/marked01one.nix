@@ -67,24 +67,24 @@ in {
       chromium
       discord
       drawio
+      efibootmgr
       git
+      jq
       kew
+      ltspice
+      reaper
       spotdl
       teams-for-linux
       tokei
+      unityhub
       vscode
       youtube-music
       zoom-us
-      ltspice
-      efibootmgr
-      unityhub
-      reaper
-      jq
 
       # Nix IDE Tools.
       alejandra
-      nixd
       nil
+      nixd
     ]
     # Custom packages.
     ++ (
