@@ -71,17 +71,18 @@ in {
       git
       jq
       kew
+      libreoffice
       ltspice
+      presenterm
       reaper
       spotdl
       teams-for-linux
       tokei
       unityhub
+      ventoy
       vscode
       youtube-music
       zoom-us
-      presenterm
-      libreoffice
 
       # Nix IDE Tools.
       alejandra
