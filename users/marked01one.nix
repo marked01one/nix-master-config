@@ -30,6 +30,10 @@ in {
 
   # Enable unfree packages.
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-1.1.10"
+    "ventoy-1.1.07"
+  ];
 
   imports = [
     # Home configuration files.
@@ -79,10 +83,10 @@ in {
       teams-for-linux
       tokei
       unityhub
-      ventoy
       vscode
       youtube-music
       zoom-us
+      ventoy
 
       # Nix IDE Tools.
       alejandra
