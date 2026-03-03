@@ -87,6 +87,7 @@ in {
       youtube-music
       zoom-us
       ventoy
+      vesktop
 
       # Nix IDE Tools.
       alejandra
