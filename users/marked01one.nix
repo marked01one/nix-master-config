@@ -68,6 +68,7 @@ in {
   home.packages = with pkgs;
     [
       # Regular packages
+      ani-cli
       chromium
       discord
       drawio
