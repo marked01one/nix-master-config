@@ -80,6 +80,20 @@
         "zen.tabs.vertical.right-side" = true;
         "zen.widget.linux.transparency" = true;
         "browser.tabs.allow_transparent_browser" = false;
+
+        # AI blocking settings
+        "browser.ai.control.default" = "blocked";
+        "browser.ai.control.linkPreviewKeyPoints" = "blocked";
+        "browser.ai.control.pdfjsAltText" = "blocked";
+        "browser.ai.control.sidebarChatbot" = "blocked";
+        "browser.ai.control.smartTabGroups" = "blocked";
+        "browser.ml.chat.enabled" = false;
+        "browser.ml.chat.page" = false;
+        "browser.ml.linkPreview.enabled" = false;
+        "browser.tabs.groups.smart.enabled" = false;
+        "browser.tabs.groups.smart.userEnabled" = false;
+        "extensions.ml.enabled" = false;
+        "pdfjs.enableAltText" = false;
       };
     };
   };
