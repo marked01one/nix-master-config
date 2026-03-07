@@ -22,9 +22,9 @@
       format = "{release} ({arch})";
     }
     {
-      type = "packages";
-      key = "pkgs    ";
-      format = "{nix-system}";
+      type = "display";
+      key = "display ";
+      format = "{width}x{height} @ {refresh-rate} Hz";
     }
     {
       type = "cpu";
