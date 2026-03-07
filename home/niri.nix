@@ -17,7 +17,10 @@
           dwt = true; # Disable trackpad when typing.
           tap-button-map = "left-right-middle";
           click-method = "clickfinger";
+          natural-scroll = false;
         };
+
+        mouse.natural-scroll = false;
 
         tablet.map-to-output = "eDP-1";
         touch.map-to-output = "eDP-1";
