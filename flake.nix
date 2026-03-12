@@ -84,6 +84,12 @@
         specialArgs = {inherit inputs cwd shared-overlays;};
         modules = [./hosts/strix-g18/default.nix];
       };
+      # hostname: thinkpad-t480 (to be used on Thinkpad T480 laptop)
+      thinkpad-t480 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [./hosts/thinkpad-t480/default.nix];
+      };
     };
 
     # Home Manager configurations for user-specific setups. To rebuild, run:
